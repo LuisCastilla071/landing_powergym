@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerGym Juigalpa | La Casa de los Campeones</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#dc2626',
+                        secondary: '#991b1b',
+                        ink: '#151515',
+                        muted: '#5f6368',
+                        soft: '#f6f7f9'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif']
+                    },
+                    boxShadow: {
+                        glow: '0 20px 60px rgba(220, 38, 38, 0.25)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #ffffff;
+            color: #151515;
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .nav-link {
+            color: #27272a;
+            font-weight: 700;
+            transition: color 180ms ease;
+        }
+
+        .nav-link:hover {
+            color: #dc2626;
+        }
+
+        .btn-primary,
+        .btn-outline {
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border-radius: 999px;
+            font-weight: 900;
+            line-height: 1;
+            transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+        }
+
+        .btn-primary {
+            background: #dc2626;
+            color: #fff;
+            box-shadow: 0 14px 30px rgba(220, 38, 38, 0.26);
+        }
+
+        .btn-primary:hover {
+            background: #991b1b;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            color: #fff;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: #dc2626;
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            min-height: 450px;
+            background-image:
+                linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.62) 46%, rgba(0, 0, 0, 0.35) 100%),
+                url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .glass-stat {
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            border-radius: 8px;
+        }
+
+        .plan-card {
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+            transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(220, 38, 38, 0.45);
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.13);
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            right: clamp(1rem, 3vw, 2rem);
+            bottom: clamp(1rem, 3vw, 2rem);
+            width: 58px;
+            height: 58px;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            background: #25d366;
+            color: #fff;
+            font-size: 2rem;
+            box-shadow: 0 14px 32px rgba(37, 211, 102, 0.38);
+            animation: pulse-green 2.2s infinite;
+            transition: transform 180ms ease;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.08);
+            animation: none;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+            }
+
+            70% {
+                box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        #success-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(4px);
+        }
+
+        #success-modal.active {
+            display: flex;
+        }
+
+        @media (max-width: 767px) {
+            .hero-section {
+                min-height: auto;
+                background-position: center top;
+            }
+
+            .floating-whatsapp {
+                width: 52px;
+                height: 52px;
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <nav class="fixed top-0 left-0 w-full z-40 bg-white/95 backdrop-blur-md border-b border-gray-200" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <button type="button" class="flex items-center gap-3 text-left"
+                    onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" aria-label="Ir al inicio">
+                    <img src="imagenes/Logo PowerGym.jpg" alt="PowerGym Logo"
+                        class="w-12 h-12 object-contain rounded-lg">
+                    <span class="font-heading font-black text-xl text-ink hidden sm:block">Power<span
+                            class="text-primary">Gym</span></span>
+                </button>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="nav-link">Inicio</a>
+                    <a href="#mensualidad" class="nav-link">Planes</a>
+                    <a href="#instalaciones" class="nav-link">Instalaciones</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                    <a href="https://wa.me/50586289512" target="_blank" rel="noopener" class="btn-primary px-6 text-sm">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Agendar
+                    </a>
+                </div>
+
+                <button id="mobile-menu-btn" type="button"
+                    class="md:hidden w-11 h-11 rounded-lg border border-gray-200 text-primary flex items-center justify-center"
+                    aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 py-4">
+                <div class="grid gap-3">
+                    <a href="#inicio" class="nav-link py-2">Inicio</a>
+                    <a href="#mensualidad" class="nav-link py-2">Planes</a>
+                    <a href="#instalaciones" class="nav-link py-2">Instalaciones</a>
+                    <a href="#contacto" class="nav-link py-2">Contacto</a>
+                    <a href="https://wa.me/50586289512" target="_blank" rel="noopener" class="btn-primary px-6">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Agendar por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <a href="https://wa.me/50586289512" target="_blank" rel="noopener" class="floating-whatsapp"
+        aria-label="Escribir por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <main class="pt-20">
+        <!-- HERO -->
+        <section id="inicio" class="hero-section relative flex items-center overflow-hidden py-20 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="max-w-3xl text-white">
+                    <p class="inline-flex items-center gap-2 bg-white/12 border border-white/20 rounded-full px-4 py-2 text-sm font-bold mb-6"
+                        data-aos="fade-down">
+                        <i class="fa-solid fa-trophy text-yellow-300"></i>
+                        La Casa de los Campeones
+                    </p>
+
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.95] mb-6" data-aos="fade-up">
+                        Transforma tu cuerpo.<br>Construye tu mejor versión.
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-white/90 leading-relaxed mb-8 max-w-2xl" data-aos="fade-up"
+                        data-aos-delay="100">
+                        Entrena con equipamiento profesional, acceso 24/7 y una comunidad enfocada en resultados reales.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12" data-aos="fade-up" data-aos-delay="180">
+                        <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
+                            class="btn-primary px-8 py-4 text-base">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            Contáctanos
+                        </a>
+                        <a href="#mensualidad" class="btn-outline px-8 py-4 text-base">
+                            Ver planes
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-3 sm:gap-4 max-w-2xl" data-aos="fade-up" data-aos-delay="260">
+                        <div class="glass-stat p-4 sm:p-5">
+                            <p class="text-2xl sm:text-4xl font-black">2.7K+</p>
+                            <p class="text-white/80 text-xs sm:text-sm mt-1">Seguidores</p>
+                        </div>
+                        <div class="glass-stat p-4 sm:p-5">
+                            <p class="text-2xl sm:text-4xl font-black">24/7</p>
+                            <p class="text-white/80 text-xs sm:text-sm mt-1">Abierto</p>
+                        </div>
+                        <div class="glass-stat p-4 sm:p-5">
+                            <p class="text-2xl sm:text-4xl font-black">Elite</p>
+                            <p class="text-white/80 text-xs sm:text-sm mt-1">Gym</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLANES -->
+        <section id="mensualidad" class="py-20 md:py-28 bg-soft">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-2xl mb-12 md:mb-16">
+                    <p class="text-primary font-black uppercase tracking-wide mb-3">Mensualidad y rutinas</p>
+                    <h2 class="text-4xl md:text-6xl font-black text-ink leading-tight mb-4">Elige cómo quieres empezar
+                    </h2>
+                    <p class="text-lg text-muted">Planes claros para entrenar a tu ritmo o recibir acompañamiento
+                        personalizado.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+                    <article class="plan-card p-6 sm:p-8 lg:p-10" data-aos="fade-up">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-dumbbell"></i>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-black text-ink mb-2">Mensualidad</h3>
+                        <p class="text-primary mb-6 font-bold">Acceso completo al gimnasio</p>
+                        <p class="text-5xl font-black text-primary mb-8">C$600<span
+                                class="text-base text-muted font-bold"> / mes</span></p>
+                        <ul class="space-y-4 mb-10 text-left text-muted">
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-check text-primary"></i><span>Acceso 24/7 al gym</span></li>
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-check text-primary"></i><span>Clases ilimitadas</span></li>
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-check text-primary"></i><span>Equipamiento elite</span></li>
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-check text-primary"></i><span>Comunidad de campeones</span></li>
+                        </ul>
+                        <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
+                            class="btn-primary w-full px-6 py-4">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            Contratar ahora
+                        </a>
+                    </article>
+
+                    <article class="plan-card p-6 sm:p-8 lg:p-10 border-primary relative overflow-hidden"
+                        data-aos="fade-up" data-aos-delay="120">
+                        <div
+                            class="absolute top-0 right-0 bg-primary text-white font-black px-5 py-2 text-xs uppercase rounded-bl-lg">
+                            Más popular
+                        </div>
+                        <div
+                            class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-black text-ink mb-2">Rutina de ejercicio</h3>
+                        <p class="text-primary mb-6 font-bold">Programas personalizados</p>
+                        <p class="text-5xl font-black text-primary mb-8">C$50<span
+                                class="text-base text-muted font-bold"> / sesión</span></p>
+                        <ul class="space-y-4 mb-10 text-left text-muted">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-primary"></i><span>Plan
+                                    personalizado</span></li>
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-check text-primary"></i><span>Entrenador certificado</span></li>
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-check text-primary"></i><span>Seguimiento de progreso</span></li>
+                            <li class="flex items-center gap-3"><i
+                                    class="fa-solid fa-check text-primary"></i><span>Asesoría nutricional</span></li>
+                        </ul>
+                        <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
+                            class="btn-primary w-full px-6 py-4">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            Agendar sesión
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSTALACIONES (GALERÍA) -->
+        <section id="instalaciones" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <p class="text-primary font-black uppercase tracking-wide mb-3">
+                        Instalaciones
+                    </p>
+                    <h2 class="text-4xl md:text-5xl font-black text-ink">
+                        Conoce PowerGym
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=80"
+                        alt="Instalaciones de PowerGym 1" class="rounded-lg shadow-lg h-80 w-full object-cover">
+
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1000&q=80"
+                        alt="Instalaciones de PowerGym 2" class="rounded-lg shadow-lg h-80 w-full object-cover">
+
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1000&q=80"
+                        alt="Instalaciones de PowerGym 3" class="rounded-lg shadow-lg h-80 w-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIOS -->
+        <section class="py-20 bg-soft">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <p class="text-primary font-black uppercase tracking-wide mb-3">Comunidad</p>
+                    <h2 class="text-4xl md:text-5xl font-black text-ink">
+                        Lo que dicen nuestros clientes
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+                        <div class="text-yellow-500 mb-3 text-lg">★★★★★</div>
+                        <p class="text-muted mb-4 leading-relaxed">
+                            Excelente ambiente y máquinas modernas.
+                        </p>
+                        <strong class="text-ink font-heading block">Carlos M.</strong>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+                        <div class="text-yellow-500 mb-3 text-lg">★★★★★</div>
+                        <p class="text-muted mb-4 leading-relaxed">
+                            El mejor gimnasio de Juigalpa.
+                        </p>
+                        <strong class="text-ink font-heading block">María G.</strong>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+                        <div class="text-yellow-500 mb-3 text-lg">★★★★★</div>
+                        <p class="text-muted mb-4 leading-relaxed">
+                            He logrado resultados reales.
+                        </p>
+                        <strong class="text-ink font-heading block">Luis R.</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto" class="py-20 md:py-24 bg-ink text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-14 items-center">
+                    <div>
+                        <p class="text-primary font-black uppercase tracking-wide mb-3">Contacto</p>
+                        <h2 class="text-4xl md:text-6xl font-black leading-tight mb-6">¿Listo para cambiar?</h2>
+                        <p class="text-lg md:text-xl text-white/80 leading-relaxed mb-8">
+                            Escríbenos y empieza tu entrenamiento en PowerGym Juigalpa. Te ayudamos a elegir la mejor
+                            opción para tu meta.
+                        </p>
+                        <div class="space-y-4 text-white/80">
+                            <p class="flex gap-3"><i
+                                    class="fa-solid fa-location-dot text-primary mt-1"></i><span>Disnorte 1/2 cuadra al
+                                    este, Juigalpa, Nicaragua</span></p>
+                            <p class="flex gap-3"><i class="fa-solid fa-phone text-primary mt-1"></i><span>+505 8628
+                                    9512</span></p>
+                            <p class="flex gap-3"><i class="fa-solid fa-clock text-primary mt-1"></i><span>Abierto
+                                    24/7</span></p>
+                        </div>
+                    </div>
+
+                    <form id="contact-form" class="bg-white rounded-lg p-6 sm:p-8 shadow-glow">
+                        <div class="grid md:grid-cols-2 gap-4 mb-4">
+                            <label class="sr-only" for="name">Tu nombre</label>
+                            <input id="name" type="text" placeholder="Tu nombre" required
+                                class="w-full px-5 py-4 rounded-lg bg-gray-50 border border-gray-200 text-ink placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
+
+                            <label class="sr-only" for="phone">Tu WhatsApp</label>
+                            <input id="phone" type="tel" placeholder="Tu WhatsApp" required
+                                class="w-full px-5 py-4 rounded-lg bg-gray-50 border border-gray-200 text-ink placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
+                        </div>
+
+                        <label class="sr-only" for="email">Tu email</label>
+                        <input id="email" type="email" placeholder="Tu email" required
+                            class="w-full px-5 py-4 rounded-lg bg-gray-50 border border-gray-200 text-ink placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary mb-4">
+
+                        <button type="submit" class="btn-primary w-full px-6 py-4 text-base">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            Obtener mi prueba gratis
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="py-24 bg-primary text-white">
+            <div class="max-w-5xl mx-auto px-4 text-center" data-aos="zoom-in">
+                <h2 class="text-5xl font-black mb-6">
+                    Empieza hoy
+                </h2>
+                <p class="text-xl mb-8 opacity-90">
+                    Tu mejor versión está esperando.
+                </p>
+                <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
+                    class="bg-white text-primary px-10 py-5 rounded-full font-black inline-flex items-center gap-3 shadow-xl hover:scale-105 transition-transform duration-180">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Escribir por WhatsApp
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-white/10 py-12 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="imagenes/Logo PowerGym.jpg" alt="PowerGym Logo"
+                            class="w-10 h-10 object-contain rounded-lg">
+                        <span class="font-heading font-black text-xl">Power<span class="text-primary">Gym</span></span>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-3">2.7 mil seguidores</p>
+                    <p class="text-gray-300 text-sm">PowerGYM · EliteGYM · PowerFitness</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Ubicación</h4>
+                    <p class="text-gray-300 text-sm leading-relaxed">Disnorte 1/2 cuadra al este, Juigalpa, Nicaragua,
+                        55000</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Contacto</h4>
+                    <p class="text-gray-300 text-sm mb-2"><i class="fa-solid fa-phone text-primary mr-2"></i>+505 8628
+                        9512</p>
+                    <p class="text-gray-300 text-sm"><i class="fa-solid fa-clock text-primary mr-2"></i>24/7 abierto</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Síguenos</h4>
+                    <div class="flex gap-3 mb-4">
+                        <a href="https://instagram.com" target="_blank" rel="noopener"
+                            class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
+                            aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener"
+                            class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
+                            aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
+                            class="w-10 h-10 rounded-full bg-white/10 hover:bg-green-600 flex items-center justify-center transition-colors"
+                            aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-gray-400 text-sm">
+                <p class="mb-2">La Casa de los Campeones</p>
+                <p class="mb-2">Fuerza · Disciplina · Resultados</p>
+                <p>&copy; 2026 PowerGym Juigalpa, Nicaragua</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE ÉXITO -->
+    <div id="success-modal">
+        <div
+            class="bg-white border border-primary p-8 rounded-lg max-w-sm w-full text-center relative transform scale-95 transition-transform duration-300">
+            <div
+                class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-3xl mx-auto mb-4">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-3xl font-black text-ink mb-2">¡Listo!</h3>
+            <p class="text-muted mb-6">Nos pondremos en contacto en menos de una hora para activar tu prueba gratis.</p>
+            <button id="close-modal-btn" type="button" class="btn-primary w-full px-6 py-4">Entendido</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 700, once: true, offset: 50 });
+
+        const contactForm = document.getElementById('contact-form');
+        const successModal = document.getElementById('success-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            successModal.classList.add('active');
+            setTimeout(() => {
+                successModal.querySelector('div').classList.remove('scale-95');
+                successModal.querySelector('div').classList.add('scale-100');
+            }, 10);
+            contactForm.reset();
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            successModal.querySelector('div').classList.remove('scale-100');
+            successModal.querySelector('div').classList.add('scale-95');
+            setTimeout(() => {
+                successModal.classList.remove('active');
+            }, 180);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    mobileMenu.classList.add('hidden');
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
