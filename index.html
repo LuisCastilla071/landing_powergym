@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth overflow-x-hidden w-full m-0 p-0">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PowerGym Juigalpa | La Casa de los Campeones</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PowerGym Juigalpa | El gimnasio #1 de Juigalpa</title>
+
+    <meta name="description"
+        content="PowerGym en Juigalpa, Nicaragua. El mejor gimnasio con equipamiento profesional, acceso 24/7, suplementos deportivos y comunidad enfocada en resultados.">
+    <meta name="keywords"
+        content="PowerGym Juigalpa, gimnasio Juigalpa, entrenamiento Juigalpa, suplementos Juigalpa, creatina, proteína, pre-entreno">
+
+    <!-- ===== FAVICON (RAÍZ) ===== -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#dc2626">
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,8 +33,8 @@
                     colors: {
                         primary: '#dc2626',
                         secondary: '#991b1b',
-                        ink: '#151515',
-                        muted: '#5f6368',
+                        ink: '#111827',
+                        muted: '#6b7280',
                         soft: '#f6f7f9'
                     },
                     fontFamily: {
@@ -28,7 +42,8 @@
                         heading: ['Poppins', 'sans-serif']
                     },
                     boxShadow: {
-                        glow: '0 20px 60px rgba(220, 38, 38, 0.25)'
+                        glow: '0 20px 60px rgba(220, 38, 38, 0.15)',
+                        'glow-lg': '0 30px 80px rgba(220, 38, 38, 0.25)'
                     }
                 }
             }
@@ -40,30 +55,41 @@
             box-sizing: border-box;
         }
 
+        html,
         body {
             margin: 0;
+            padding: 0;
             background: #ffffff;
-            color: #151515;
+            color: #111827;
             font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+        }
+
+        body {
+            touch-action: pan-y;
+        }
+
+        img,
+        video,
+        canvas,
+        svg {
+            max-width: 100%;
         }
 
         h1,
         h2,
         h3,
-        h4,
-        h5,
-        h6 {
+        h4 {
             font-family: 'Poppins', sans-serif;
-            letter-spacing: 0;
-        }
-
-        img {
-            max-width: 100%;
         }
 
         .nav-link {
-            color: #27272a;
-            font-weight: 700;
+            color: #374151;
+            font-weight: 600;
+            font-size: 1.05rem;
             transition: color 180ms ease;
         }
 
@@ -71,23 +97,22 @@
             color: #dc2626;
         }
 
-        .btn-primary,
-        .btn-outline {
+        .btn-primary {
             min-height: 48px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             border-radius: 999px;
-            font-weight: 900;
-            line-height: 1;
-            transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
-        }
-
-        .btn-primary {
+            font-weight: 700;
+            font-size: 1.05rem;
             background: #dc2626;
             color: #fff;
-            box-shadow: 0 14px 30px rgba(220, 38, 38, 0.26);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+            transition: all 180ms ease;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
         }
 
         .btn-primary:hover {
@@ -95,47 +120,69 @@
             transform: translateY(-2px);
         }
 
-        .btn-outline {
-            border: 2px solid rgba(255, 255, 255, 0.9);
-            color: #fff;
-            background: rgba(255, 255, 255, 0.04);
+        .btn-primary::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.28) 45%, transparent 70%);
+            transform: translateX(-120%);
+            transition: transform 520ms ease;
+            pointer-events: none;
         }
 
-        .btn-outline:hover {
-            background: #fff;
-            color: #dc2626;
-            transform: translateY(-2px);
+        .btn-primary:hover::after {
+            transform: translateX(120%);
         }
 
         .hero-section {
-            min-height: 450px;
-            background-image:
-                linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.62) 46%, rgba(0, 0, 0, 0.35) 100%),
-                url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
+            min-height: calc(100svh - 80px);
+            background: #111827;
+            overflow: hidden;
         }
 
-        .glass-stat {
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(12px);
-            border-radius: 8px;
+        .hero-bg-carousel {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
         }
 
-        .plan-card {
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-            background: #fff;
-            box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
-            transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        .hero-bg-carousel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(180deg, rgba(17, 24, 39, 0.8) 0%, rgba(17, 24, 39, 0.65) 100%);
         }
 
-        .plan-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(220, 38, 38, 0.45);
-            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.13);
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            opacity: 0;
+            transform: scale(1.03);
+            transition: opacity 900ms ease, transform 4200ms ease;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .hero-mobile-image {
+            display: none;
+        }
+
+        .hero-content>* {
+            animation: hero-reveal 720ms ease both;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .floating-whatsapp {
@@ -162,6 +209,300 @@
             animation: none;
         }
 
+        .brand-logo {
+            width: 56px;
+            height: 56px;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.25);
+            border: 2px solid rgba(220, 38, 38, 0.15);
+            transition: transform 300ms ease, box-shadow 300ms ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(220, 38, 38, 0.35);
+        }
+
+        .brand-name {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-size: 1.7rem;
+            line-height: 1.1;
+            color: #111827;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-name .highlight {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 1.4rem;
+            transition: all 300ms ease;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .social-icon.facebook:hover {
+            background: #1877f2;
+            border-color: #1877f2;
+            box-shadow: 0 8px 25px rgba(24, 119, 242, 0.35);
+        }
+
+        .social-icon.tiktok:hover {
+            background: #000000;
+            border-color: #ffffff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .social-icon.whatsapp:hover {
+            background: #25d366;
+            border-color: #25d366;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+        }
+
+        /* ===== CATEGORÍAS - MÁS VERTICALES ===== */
+        .category-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            aspect-ratio: 2 / 3;
+            background: #f3f4f6;
+            border: 3px solid transparent;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .category-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2);
+        }
+
+        .category-card.active {
+            border-color: #dc2626;
+            box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2), 0 20px 60px rgba(220, 38, 38, 0.15);
+        }
+
+        .category-card .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 1rem 1rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+            color: white;
+            text-align: center;
+        }
+
+        .category-card .overlay h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .category-card .overlay p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .category-card .count-badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(220, 38, 38, 0.9);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ===== PRODUCT CAROUSEL - MÁS VERTICAL ===== */
+        .product-carousel {
+            position: relative;
+            height: 30rem;
+            overflow: hidden;
+            background: #f3f4f6;
+            contain: layout paint;
+            flex-shrink: 0;
+        }
+
+        .product-carousel-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 320ms ease;
+        }
+
+        .product-carousel-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .product-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #f3f4f6;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            left: 50%;
+            bottom: 0.75rem;
+            z-index: 2;
+            display: flex;
+            gap: 0.4rem;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        .carousel-dot {
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.62);
+            transition: background-color 180ms ease, transform 180ms ease;
+        }
+
+        .carousel-dot.active {
+            background: #dc2626;
+            transform: scale(1.2);
+        }
+
+        .product-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.85rem;
+        }
+
+        .product-details span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            border-radius: 999px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: #334155;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.45rem 0.9rem;
+            line-height: 1.3;
+        }
+
+        .product-details span i {
+            font-size: 0.9rem;
+            color: #dc2626;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .subview {
+            display: none;
+            animation: subview-in 350ms ease both;
+        }
+
+        .subview.active {
+            display: block;
+        }
+
+        .subview .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #374151;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+            cursor: pointer;
+            padding: 0.85rem 1.5rem;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .subview .back-btn:hover {
+            color: #dc2626;
+            border-color: #dc2626;
+            background: #fef2f2;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.1);
+        }
+
+        .subview .back-btn i {
+            font-size: 1.2rem;
+        }
+
+        .subview h2 {
+            font-size: 2.2rem !important;
+        }
+
+        .subview .text-muted {
+            font-size: 1.05rem !important;
+        }
+
+        .subview .text-sm {
+            font-size: 0.95rem !important;
+        }
+
+        .subview .text-base {
+            font-size: 1.05rem !important;
+        }
+
+        .subview .btn-primary {
+            font-size: 1rem !important;
+        }
+
+        @keyframes subview-in {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @keyframes pulse-green {
             0% {
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
@@ -176,447 +517,1365 @@
             }
         }
 
-        #success-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 100;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.72);
-            backdrop-filter: blur(4px);
-        }
-
-        #success-modal.active {
-            display: flex;
-        }
-
-        @media (max-width: 767px) {
-            .hero-section {
-                min-height: auto;
-                background-position: center top;
+        @keyframes hero-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
             }
 
-            .floating-whatsapp {
-                width: 52px;
-                height: 52px;
-                font-size: 1.75rem;
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes hero-image-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(-10px) scale(1.02);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scale-in {
+            from {
+                opacity: 0;
+                transform: scale(0.92);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slide-right {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Hero stats */
+        .hero-stat {
+            opacity: 0;
+            animation: fade-up 700ms ease forwards;
+        }
+
+        .hero-stat:nth-child(1) {
+            animation-delay: 400ms;
+        }
+
+        .hero-stat:nth-child(2) {
+            animation-delay: 500ms;
+        }
+
+        .hero-stat:nth-child(3) {
+            animation-delay: 600ms;
+        }
+
+        .hero-stat:nth-child(4) {
+            animation-delay: 700ms;
+        }
+
+        .category-card {
+            opacity: 0;
+            animation: scale-in 600ms ease forwards;
+        }
+
+        .category-card:nth-child(1) {
+            animation-delay: 100ms;
+        }
+
+        .category-card:nth-child(2) {
+            animation-delay: 180ms;
+        }
+
+        .category-card:nth-child(3) {
+            animation-delay: 260ms;
+        }
+
+        .category-card:nth-child(4) {
+            animation-delay: 340ms;
+        }
+
+        #navbar {
+            animation: fade-up 500ms ease forwards;
+        }
+
+        /* ===== SOBRE NOSOTROS - MODERNO ===== */
+        .about-card {
+            background: linear-gradient(145deg, #0f1724 0%, #1a1f2e 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        .about-card .image-wrapper {
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+        }
+
+        .about-card .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .about-card .image-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-card .image-wrapper .gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
+        }
+
+        .about-card .content-wrapper {
+            padding: 2rem 1.5rem;
+        }
+
+        .about-card .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(220, 38, 38, 0.15);
+            color: #dc2626;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .about-card .feature-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1.1rem;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .about-card .feature-tag:hover {
+            background: rgba(220, 38, 38, 0.2);
+            border-color: rgba(220, 38, 38, 0.4);
+            color: #fff;
+        }
+
+        .about-card .feature-tag i {
+            color: #dc2626;
+            font-size: 1rem;
+        }
+
+        /* ============================================================ */
+        /* ===== RESPONSIVE MÓVIL ===== */
+        /* ============================================================ */
+
+        @media (max-width: 640px) {
+            .hero-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                min-height: auto;
+                background-color: #111827;
+                padding-top: 0;
+            }
+
+            .hero-mobile-image {
+                display: block;
+                position: relative;
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                overflow: hidden;
+                animation: hero-image-reveal 720ms ease both;
+            }
+
+            .hero-bg-carousel {
+                display: none;
+            }
+
+            .hero-mobile-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center 40%;
+                display: block;
+            }
+
+            .hero-content {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+
+            .brand-logo {
+                width: 44px;
+                height: 44px;
+            }
+
+            .brand-name {
+                font-size: 1.3rem;
+            }
+
+            .btn-primary {
+                width: 100%;
+                min-height: 50px;
+                font-size: 1rem;
+                padding: 0.75rem 1rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.75rem;
+            }
+
+            .category-card {
+                aspect-ratio: 2 / 3;
+            }
+
+            .category-card .overlay h3 {
+                font-size: 0.95rem;
+            }
+
+            .category-card .overlay p {
+                font-size: 0.7rem;
+            }
+
+            .category-card .count-badge {
+                font-size: 0.7rem;
+                padding: 0.15rem 0.5rem;
+            }
+
+            .subview .grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .subview .back-btn {
+                font-size: 1.05rem;
+                padding: 0.7rem 1.2rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .subview h2 {
+                font-size: 1.7rem !important;
+            }
+
+            .subview .text-muted {
+                font-size: 0.95rem !important;
+            }
+
+            .product-details span {
+                font-size: 0.75rem;
+                padding: 0.35rem 0.7rem;
+            }
+
+            .product-carousel {
+                height: 22rem;
+            }
+
+            section {
+                padding-top: 2.5rem !important;
+                padding-bottom: 2.5rem !important;
+            }
+
+            #contacto .p-8 {
+                padding: 1.5rem !important;
+            }
+
+            /* ===== SOBRE NOSOTROS EN MÓVIL - TIPOGRAFÍA GRANDE ===== */
+            .about-card .image-wrapper {
+                min-height: 200px;
+            }
+
+            .about-card .image-wrapper .gradient-overlay {
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
+            }
+
+            .about-card .content-wrapper {
+                padding: 1.8rem 1.5rem;
+            }
+
+            .about-card .content-wrapper h3 {
+                font-size: 1.8rem !important;
+                line-height: 1.2;
+            }
+
+            .about-card .content-wrapper p {
+                font-size: 1rem !important;
+                line-height: 1.6;
+            }
+
+            .about-card .badge {
+                font-size: 0.8rem;
+                padding: 0.35rem 0.9rem;
+            }
+
+            .about-card .feature-tag {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.9rem;
+            }
+
+            .about-card .feature-tag i {
+                font-size: 0.85rem;
+            }
+
+            /* ===== FOOTER EN MÓVIL ===== */
+            footer .grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            footer .grid>div {
+                text-align: center;
+            }
+
+            footer .grid>div:first-child {
+                grid-column: 1 / -1;
+                text-align: center;
+            }
+
+            footer .grid>div:last-child {
+                grid-column: 1 / -1;
+                text-align: center;
+            }
+
+            footer .social-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1.2rem;
+            }
+
+            footer .text-sm {
+                font-size: 0.95rem !important;
+            }
+
+            footer h5 {
+                font-size: 1.1rem !important;
+            }
+
+            footer h4 {
+                font-size: 1.2rem !important;
+            }
+
+            footer p {
+                font-size: 0.95rem !important;
+            }
+
+            .hero-content .grid {
+                gap: 0.5rem;
+            }
+
+            .hero-content .grid>div {
+                padding: 0.75rem !important;
+            }
+        }
+
+        @media (min-width: 641px) {
+            .btn-primary {
+                width: auto;
+                min-width: 180px;
+            }
+
+            section {
+                padding-top: 5rem !important;
+                padding-bottom: 5rem !important;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-card .image-wrapper {
+                min-height: 400px;
+            }
+
+            .about-card .content-wrapper {
+                padding: 3rem 3.5rem;
+            }
+
+            .about-card .content-wrapper h3 {
+                font-size: 2.8rem !important;
+            }
+
+            .about-card .content-wrapper p {
+                font-size: 1.15rem !important;
+            }
+
+            .about-card .feature-tag {
+                font-size: 1rem;
+                padding: 0.5rem 1.2rem;
+            }
+
+            /* ===== FOOTER EN DESKTOP ===== */
+            footer .grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+            }
+
+            footer .text-sm {
+                font-size: 1rem !important;
+            }
+
+            footer h5 {
+                font-size: 1.15rem !important;
+            }
+
+            footer h4 {
+                font-size: 1.3rem !important;
+            }
+
+            footer .social-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-card .image-wrapper {
+                min-height: 450px;
+            }
+
+            .about-card .content-wrapper {
+                padding: 4rem;
+            }
+
+            .about-card .content-wrapper h3 {
+                font-size: 3.2rem !important;
+            }
+
+            .about-card .content-wrapper p {
+                font-size: 1.2rem !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.001ms !important;
             }
         }
     </style>
 </head>
 
 <body class="antialiased">
-    <nav class="fixed top-0 left-0 w-full z-40 bg-white/95 backdrop-blur-md border-b border-gray-200" id="navbar">
+
+    <!-- ===== NAV ===== -->
+    <nav class="fixed top-0 left-0 w-full z-40 bg-white/95 backdrop-blur-md border-b border-gray-100" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <button type="button" class="flex items-center gap-3 text-left"
-                    onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" aria-label="Ir al inicio">
-                    <img src="imagenes/Logo PowerGym.jpg" alt="PowerGym Logo"
-                        class="w-12 h-12 object-contain rounded-lg">
-                    <span class="font-heading font-black text-xl text-ink hidden sm:block">Power<span
-                            class="text-primary">Gym</span></span>
+                <button type="button" class="flex items-center gap-3 text-left" id="brand-logo-btn">
+                    <img src="imagenes/Logo PowerGym.jpg" alt="Logo PowerGym" class="brand-logo" decoding="async">
+                    <div class="leading-none">
+                        <span class="brand-name">
+                            Power<span class="highlight">Gym</span>
+                        </span>
+                    </div>
                 </button>
 
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#inicio" class="nav-link">Inicio</a>
-                    <a href="#mensualidad" class="nav-link">Planes</a>
+                    <a href="#sobre" class="nav-link">Sobre</a>
+                    <a href="#productos" class="nav-link">Productos</a>
                     <a href="#instalaciones" class="nav-link">Instalaciones</a>
                     <a href="#contacto" class="nav-link">Contacto</a>
                     <a href="https://wa.me/50586289512" target="_blank" rel="noopener" class="btn-primary px-6 text-sm">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        Agendar
+                        <i class="fa-solid fa-dumbbell"></i> Únete Ahora
                     </a>
                 </div>
 
                 <button id="mobile-menu-btn" type="button"
-                    class="md:hidden w-11 h-11 rounded-lg border border-gray-200 text-primary flex items-center justify-center"
-                    aria-label="Abrir menú">
-                    <i class="fa-solid fa-bars text-xl"></i>
+                    class="md:hidden w-11 h-11 rounded-xl border border-gray-200 text-primary flex items-center justify-center transition-colors duration-200"
+                    aria-label="Menú">
+                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
 
-            <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 py-4">
-                <div class="grid gap-3">
-                    <a href="#inicio" class="nav-link py-2">Inicio</a>
-                    <a href="#mensualidad" class="nav-link py-2">Planes</a>
-                    <a href="#instalaciones" class="nav-link py-2">Instalaciones</a>
-                    <a href="#contacto" class="nav-link py-2">Contacto</a>
-                    <a href="https://wa.me/50586289512" target="_blank" rel="noopener" class="btn-primary px-6">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        Agendar por WhatsApp
-                    </a>
+            <div id="mobile-menu"
+                class="md:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out border-gray-100">
+                <div class="grid gap-1 pb-5 pt-2 px-1">
+                    <a href="#inicio"
+                        class="mobile-nav-link nav-link py-3 px-4 rounded-xl hover:bg-red-50/60 flex items-center justify-between">Inicio
+                        <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
+                    <a href="#sobre"
+                        class="mobile-nav-link nav-link py-3 px-4 rounded-xl hover:bg-red-50/60 flex items-center justify-between">Sobre
+                        <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
+                    <a href="#productos"
+                        class="mobile-nav-link nav-link py-3 px-4 rounded-xl hover:bg-red-50/60 flex items-center justify-between">Productos
+                        <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
+                    <a href="#instalaciones"
+                        class="mobile-nav-link nav-link py-3 px-4 rounded-xl hover:bg-red-50/60 flex items-center justify-between">Instalaciones
+                        <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
+                    <a href="#contacto"
+                        class="mobile-nav-link nav-link py-3 px-4 rounded-xl hover:bg-red-50/60 flex items-center justify-between">Contacto
+                        <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
+                    <div class="pt-3 px-4">
+                        <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
+                            class="btn-primary px-6 w-full shadow-md">
+                            <i class="fa-solid fa-dumbbell"></i> Únete Ahora
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <a href="https://wa.me/50586289512" target="_blank" rel="noopener" class="floating-whatsapp"
-        aria-label="Escribir por WhatsApp">
+    <!-- ===== WHATSAPP FLOTANTE ===== -->
+    <a href="https://wa.me/50586289512" target="_blank" rel="noopener" class="floating-whatsapp" aria-label="WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <main class="pt-20">
-        <!-- HERO -->
-        <section id="inicio" class="hero-section relative flex items-center overflow-hidden py-20 md:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div class="max-w-3xl text-white">
-                    <p class="inline-flex items-center gap-2 bg-white/12 border border-white/20 rounded-full px-4 py-2 text-sm font-bold mb-6"
-                        data-aos="fade-down">
-                        <i class="fa-solid fa-trophy text-yellow-300"></i>
-                        La Casa de los Campeones
-                    </p>
+    <!-- ===== MAIN ===== -->
+    <main class="pt-20 w-full max-w-full overflow-hidden">
 
-                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.95] mb-6" data-aos="fade-up">
-                        Transforma tu cuerpo.<br>Construye tu mejor versión.
-                    </h1>
+        <!-- ===== HERO ===== -->
+        <section id="inicio"
+            class="hero-section relative flex items-center justify-center py-8 sm:py-24 text-center text-white w-full">
+            <div class="hero-bg-carousel" data-hero-carousel aria-hidden="true">
+                <img src="imagenes/Banner PowerGym.jpg" alt="" class="hero-slide active" decoding="async"
+                    fetchpriority="high">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                    data-src="imagenes/Mejor version.jpg" alt="" class="hero-slide" loading="lazy" decoding="async">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                    data-src="imagenes/Ventas de suplementos.jpg" alt="" class="hero-slide" loading="lazy"
+                    decoding="async">
+            </div>
+            <div class="hero-mobile-image" data-hero-carousel>
+                <img src="imagenes/Banner PowerGym.jpg" alt="PowerGym Juigalpa" class="hero-slide active"
+                    decoding="async" fetchpriority="high">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                    data-src="imagenes/Mejor version.jpg" alt="PowerGym Entrenamiento" class="hero-slide" loading="lazy"
+                    decoding="async">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                    data-src="imagenes/Ventas de suplementos.jpg" alt="PowerGym Suplementos" class="hero-slide"
+                    loading="lazy" decoding="async">
+            </div>
+            <div class="hero-content max-w-4xl mx-auto px-4 w-full overflow-hidden flex flex-col items-center">
 
-                    <p class="text-lg sm:text-xl text-white/90 leading-relaxed mb-8 max-w-2xl" data-aos="fade-up"
-                        data-aos-delay="100">
-                        Entrena con equipamiento profesional, acceso 24/7 y una comunidad enfocada en resultados reales.
-                    </p>
+                <h1 class="text-3xl sm:text-6xl font-black leading-tight mb-4 sm:mb-6 tracking-tight max-w-full px-2"
+                    data-aos="fade-up">
+                    Transforma tu cuerpo.<br>Construye tu <span class="text-primary">mejor versión</span>
+                </h1>
 
-                    <div class="flex flex-col sm:flex-row gap-4 mb-12" data-aos="fade-up" data-aos-delay="180">
-                        <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
-                            class="btn-primary px-8 py-4 text-base">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            Contáctanos
-                        </a>
-                        <a href="#mensualidad" class="btn-outline px-8 py-4 text-base">
-                            Ver planes
-                        </a>
+                <p class="text-base sm:text-xl text-gray-200 max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed px-2"
+                    data-aos="fade-up" data-aos-delay="100">
+                    Entrena con equipamiento profesional, acceso 24/7 y una comunidad enfocada en resultados reales.
+                    Suplementos de alta calidad para potenciar tu rendimiento.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full max-w-md px-4 sm:px-0"
+                    data-aos="fade-up" data-aos-delay="180">
+                    <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
+                        class="btn-primary px-8 py-3 sm:py-4 text-base w-full sm:w-auto">
+                        <i class="fa-brands fa-whatsapp"></i> Contáctanos
+                    </a>
+                    <a href="#productos"
+                        class="inline-flex items-center justify-center border-2 border-white text-white rounded-full px-8 py-3 sm:py-4 font-bold transition hover:bg-white hover:text-ink w-full sm:w-auto">
+                        Ver Productos
+                    </a>
+                </div>
+
+                <!-- ===== TARJETAS DE ESTADÍSTICAS ===== -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-3xl mx-auto mt-6 sm:mt-12"
+                    data-aos="fade-up" data-aos-delay="250">
+
+                    <div
+                        class="hero-stat bg-white/10 backdrop-blur-md rounded-xl border border-white/10 p-3 sm:p-4 flex items-center justify-center gap-3 sm:gap-4 transition hover:bg-white/20">
+                        <i class="fa-solid fa-users text-primary text-lg sm:text-xl"></i>
+                        <div class="text-left">
+                            <p class="text-lg sm:text-2xl font-black leading-tight">2.7K+</p>
+                            <p class="text-[11px] sm:text-xs text-gray-300 leading-tight">Seguidores</p>
+                        </div>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-3 sm:gap-4 max-w-2xl" data-aos="fade-up" data-aos-delay="260">
-                        <div class="glass-stat p-4 sm:p-5">
-                            <p class="text-2xl sm:text-4xl font-black">2.7K+</p>
-                            <p class="text-white/80 text-xs sm:text-sm mt-1">Seguidores</p>
+                    <div
+                        class="hero-stat bg-white/10 backdrop-blur-md rounded-xl border border-white/10 p-3 sm:p-4 flex items-center justify-center gap-3 sm:gap-4 transition hover:bg-white/20">
+                        <i class="fa-solid fa-clock text-primary text-lg sm:text-xl"></i>
+                        <div class="text-left">
+                            <p class="text-lg sm:text-2xl font-black leading-tight">24/7</p>
+                            <p class="text-[11px] sm:text-xs text-gray-300 leading-tight">Abierto</p>
                         </div>
-                        <div class="glass-stat p-4 sm:p-5">
-                            <p class="text-2xl sm:text-4xl font-black">24/7</p>
-                            <p class="text-white/80 text-xs sm:text-sm mt-1">Abierto</p>
+                    </div>
+
+                    <div
+                        class="hero-stat bg-white/10 backdrop-blur-md rounded-xl border border-white/10 p-3 sm:p-4 flex items-center justify-center gap-3 sm:gap-4 transition hover:bg-white/20">
+                        <i class="fa-solid fa-medal text-primary text-lg sm:text-xl"></i>
+                        <div class="text-left">
+                            <p class="text-lg sm:text-2xl font-black leading-tight">Elite</p>
+                            <p class="text-[11px] sm:text-xs text-gray-300 leading-tight">Gym</p>
                         </div>
-                        <div class="glass-stat p-4 sm:p-5">
-                            <p class="text-2xl sm:text-4xl font-black">Elite</p>
-                            <p class="text-white/80 text-xs sm:text-sm mt-1">Gym</p>
+                    </div>
+
+                    <div
+                        class="hero-stat bg-white/10 backdrop-blur-md rounded-xl border border-white/10 p-3 sm:p-4 flex items-center justify-center gap-3 sm:gap-4 transition hover:bg-white/20">
+                        <i class="fa-solid fa-star text-primary text-lg sm:text-xl"></i>
+                        <div class="text-left">
+                            <p class="text-lg sm:text-2xl font-black leading-tight">4.9</p>
+                            <p class="text-[11px] sm:text-xs text-gray-300 leading-tight">Calificación</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SOBRE NOSOTROS - TIPOGRAFÍA GRANDE ===== -->
+        <section id="sobre" class="py-10 sm:py-20 bg-white w-full max-w-full overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="about-card">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="image-wrapper">
+                            <img src="imagenes/PowerGym.png" alt="PowerGym Juigalpa - El mejor gimnasio de la ciudad"
+                                loading="lazy" decoding="async">
+                            <div class="gradient-overlay"></div>
+                        </div>
+                        <div class="content-wrapper flex flex-col justify-center text-white">
+                            <span class="badge mb-3 inline-flex w-fit">
+                                <i class="fa-solid fa-star"></i>
+                                Número 1 en Juigalpa
+                            </span>
+                            <h3 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 leading-tight">
+                                El gimnasio <span class="text-primary">#1</span> de Juigalpa
+                            </h3>
+                            <p class="text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed mb-5">
+                                PowerGym es más que un gimnasio. Somos una comunidad de campeones que entrena con
+                                disciplina, pasión y constancia. Equipamiento de primera, entrenadores certificados y un
+                                ambiente que te impulsa a dar lo mejor de ti.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mb-5">
+                                <span class="feature-tag">
+                                    <i class="fa-solid fa-trophy"></i> Campeones
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fa-solid fa-star"></i> 5 Estrellas
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fa-solid fa-medal"></i> Elite Gym
+                                </span>
+                                <span class="feature-tag">
+                                    <i class="fa-solid fa-clock"></i> 24/7
+                                </span>
+                            </div>
+                            <a href="https://wa.me/50586289512" target="_blank"
+                                class="btn-primary px-8 py-4 w-full sm:w-auto text-base sm:text-lg">
+                                <i class="fa-brands fa-whatsapp"></i> Únete hoy
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PLANES -->
-        <section id="mensualidad" class="py-20 md:py-28 bg-soft">
+        <!-- ===== PRODUCTOS - SIN CATEGORÍA "TODOS" ===== -->
+        <section id="productos" class="py-10 sm:py-20 bg-soft w-full max-w-full overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-2xl mb-12 md:mb-16">
-                    <p class="text-primary font-black uppercase tracking-wide mb-3">Mensualidad y rutinas</p>
-                    <h2 class="text-4xl md:text-6xl font-black text-ink leading-tight mb-4">Elige cómo quieres empezar
-                    </h2>
-                    <p class="text-lg text-muted">Planes claros para entrenar a tu ritmo o recibir acompañamiento
-                        personalizado.</p>
+
+                <div id="main-view" style="display: block !important;">
+                    <div class="text-center mb-8 sm:mb-10" data-aos="fade-up">
+                        <p class="text-primary font-black uppercase tracking-wide mb-2 text-sm sm:text-base">Suplementos
+                            Deportivos</p>
+                        <h2 class="text-2xl sm:text-5xl font-black text-ink">Nuestros Productos</h2>
+                        <p class="text-muted text-sm sm:text-base mt-2 sm:mt-3">Selecciona una categoría para ver los
+                            productos disponibles.</p>
+                    </div>
+                    <div class="categories-grid" id="categories-grid"></div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
-                    <article class="plan-card p-6 sm:p-8 lg:p-10" data-aos="fade-up">
-                        <div
-                            class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-6">
-                            <i class="fa-solid fa-dumbbell"></i>
-                        </div>
-                        <h3 class="text-2xl md:text-3xl font-black text-ink mb-2">Mensualidad</h3>
-                        <p class="text-primary mb-6 font-bold">Acceso completo al gimnasio</p>
-                        <p class="text-5xl font-black text-primary mb-8">C$600<span
-                                class="text-base text-muted font-bold"> / mes</span></p>
-                        <ul class="space-y-4 mb-10 text-left text-muted">
-                            <li class="flex items-center gap-3"><i
-                                    class="fa-solid fa-check text-primary"></i><span>Acceso 24/7 al gym</span></li>
-                            <li class="flex items-center gap-3"><i
-                                    class="fa-solid fa-check text-primary"></i><span>Clases ilimitadas</span></li>
-                            <li class="flex items-center gap-3"><i
-                                    class="fa-solid fa-check text-primary"></i><span>Equipamiento elite</span></li>
-                            <li class="flex items-center gap-3"><i
-                                    class="fa-solid fa-check text-primary"></i><span>Comunidad de campeones</span></li>
-                        </ul>
-                        <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
-                            class="btn-primary w-full px-6 py-4">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            Contratar ahora
-                        </a>
-                    </article>
-
-                    <article class="plan-card p-6 sm:p-8 lg:p-10 border-primary relative overflow-hidden"
-                        data-aos="fade-up" data-aos-delay="120">
-                        <div
-                            class="absolute top-0 right-0 bg-primary text-white font-black px-5 py-2 text-xs uppercase rounded-bl-lg">
-                            Más popular
-                        </div>
-                        <div
-                            class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-6">
-                            <i class="fa-solid fa-clipboard-list"></i>
-                        </div>
-                        <h3 class="text-2xl md:text-3xl font-black text-ink mb-2">Rutina de ejercicio</h3>
-                        <p class="text-primary mb-6 font-bold">Programas personalizados</p>
-                        <p class="text-5xl font-black text-primary mb-8">C$50<span
-                                class="text-base text-muted font-bold"> / sesión</span></p>
-                        <ul class="space-y-4 mb-10 text-left text-muted">
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-primary"></i><span>Plan
-                                    personalizado</span></li>
-                            <li class="flex items-center gap-3"><i
-                                    class="fa-solid fa-check text-primary"></i><span>Entrenador certificado</span></li>
-                            <li class="flex items-center gap-3"><i
-                                    class="fa-solid fa-check text-primary"></i><span>Seguimiento de progreso</span></li>
-                            <li class="flex items-center gap-3"><i
-                                    class="fa-solid fa-check text-primary"></i><span>Asesoría nutricional</span></li>
-                        </ul>
-                        <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
-                            class="btn-primary w-full px-6 py-4">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            Agendar sesión
-                        </a>
-                    </article>
+                <div class="subview" id="subview">
+                    <button class="back-btn" id="back-btn">
+                        <i class="fa-solid fa-arrow-left"></i> Volver al menú
+                    </button>
+                    <div id="subview-body"></div>
                 </div>
+
             </div>
         </section>
 
-        <!-- INSTALACIONES (GALERÍA) -->
-        <section id="instalaciones" class="py-20 bg-white">
+        <!-- ===== INSTALACIONES ===== -->
+        <section id="instalaciones" class="py-10 sm:py-20 bg-white w-full max-w-full overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <p class="text-primary font-black uppercase tracking-wide mb-3">
-                        Instalaciones
-                    </p>
-                    <h2 class="text-4xl md:text-5xl font-black text-ink">
-                        Conoce PowerGym
-                    </h2>
+                <div class="text-center mb-8 sm:mb-12" data-aos="fade-up">
+                    <p class="text-primary font-black uppercase tracking-wide mb-2 text-sm sm:text-base">Instalaciones
+                        Elite</p>
+                    <h2 class="text-2xl sm:text-5xl font-black text-ink">Conoce PowerGym</h2>
+                    <p class="text-muted text-sm sm:text-base mt-2 sm:mt-3">Equipamiento profesional para llevar tu
+                        entrenamiento al siguiente nivel.</p>
                 </div>
-
-                <div class="grid md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1000&q=80"
-                        alt="Instalaciones de PowerGym 1" class="rounded-lg shadow-lg h-80 w-full object-cover">
-
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1000&q=80"
-                        alt="Instalaciones de PowerGym 2" class="rounded-lg shadow-lg h-80 w-full object-cover">
-
-                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1000&q=80"
-                        alt="Instalaciones de PowerGym 3" class="rounded-lg shadow-lg h-80 w-full object-cover">
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIOS -->
-        <section class="py-20 bg-soft">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <p class="text-primary font-black uppercase tracking-wide mb-3">Comunidad</p>
-                    <h2 class="text-4xl md:text-5xl font-black text-ink">
-                        Lo que dicen nuestros clientes
-                    </h2>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
-                        <div class="text-yellow-500 mb-3 text-lg">★★★★★</div>
-                        <p class="text-muted mb-4 leading-relaxed">
-                            Excelente ambiente y máquinas modernas.
-                        </p>
-                        <strong class="text-ink font-heading block">Carlos M.</strong>
+                <div class="grid md:grid-cols-3 gap-4 sm:gap-6" data-aos="fade-up">
+                    <div class="group relative rounded-2xl overflow-hidden shadow-lg">
+                        <img src="imagenes/Banner PowerGym.jpg" alt="Instalaciones PowerGym"
+                            class="w-full h-72 object-cover group-hover:scale-105 transition duration-500"
+                            loading="lazy" decoding="async">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                            <p class="text-white font-bold">Área de Pesas</p>
+                        </div>
                     </div>
-
-                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
-                        <div class="text-yellow-500 mb-3 text-lg">★★★★★</div>
-                        <p class="text-muted mb-4 leading-relaxed">
-                            El mejor gimnasio de Juigalpa.
-                        </p>
-                        <strong class="text-ink font-heading block">María G.</strong>
+                    <div class="group relative rounded-2xl overflow-hidden shadow-lg">
+                        <img src="imagenes/Mejor version.jpg" alt="Entrenamiento PowerGym"
+                            class="w-full h-72 object-cover group-hover:scale-105 transition duration-500"
+                            loading="lazy" decoding="async">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                            <p class="text-white font-bold">Zona Cardio</p>
+                        </div>
                     </div>
-
-                    <div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
-                        <div class="text-yellow-500 mb-3 text-lg">★★★★★</div>
-                        <p class="text-muted mb-4 leading-relaxed">
-                            He logrado resultados reales.
-                        </p>
-                        <strong class="text-ink font-heading block">Luis R.</strong>
+                    <div class="group relative rounded-2xl overflow-hidden shadow-lg">
+                        <img src="imagenes/Ventas de suplementos.jpg" alt="Suplementos PowerGym"
+                            class="w-full h-72 object-cover group-hover:scale-105 transition duration-500"
+                            loading="lazy" decoding="async">
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                            <p class="text-white font-bold">Tienda de Suplementos</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CONTACTO -->
-        <section id="contacto" class="py-20 md:py-24 bg-ink text-white">
+        <!-- ===== CONTACTO ===== -->
+        <section id="contacto" class="py-10 sm:py-20 bg-ink text-white w-full max-w-full overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-14 items-center">
-                    <div>
-                        <p class="text-primary font-black uppercase tracking-wide mb-3">Contacto</p>
-                        <h2 class="text-4xl md:text-6xl font-black leading-tight mb-6">¿Listo para cambiar?</h2>
-                        <p class="text-lg md:text-xl text-white/80 leading-relaxed mb-8">
+                <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 sm:gap-12 items-center">
+                    <div data-aos="fade-right">
+                        <p class="text-primary font-black uppercase tracking-wide mb-2">Contacto</p>
+                        <h2 class="text-2xl sm:text-5xl font-black mb-4 sm:mb-6">¿Listo para cambiar?</h2>
+                        <p class="text-gray-300 text-base sm:text-lg mb-6 sm:mb-8">
                             Escríbenos y empieza tu entrenamiento en PowerGym Juigalpa. Te ayudamos a elegir la mejor
                             opción para tu meta.
                         </p>
-                        <div class="space-y-4 text-white/80">
-                            <p class="flex gap-3"><i
-                                    class="fa-solid fa-location-dot text-primary mt-1"></i><span>Disnorte 1/2 cuadra al
-                                    este, Juigalpa, Nicaragua</span></p>
-                            <p class="flex gap-3"><i class="fa-solid fa-phone text-primary mt-1"></i><span>+505 8628
-                                    9512</span></p>
-                            <p class="flex gap-3"><i class="fa-solid fa-clock text-primary mt-1"></i><span>Abierto
-                                    24/7</span></p>
+                        <div class="space-y-4 sm:space-y-6">
+                            <div class="flex gap-3 sm:gap-4">
+                                <div
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/10 flex items-center justify-center text-primary text-base sm:text-xl flex-shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Dirección</h4>
+                                    <p class="text-gray-300">Disnorte 1/2 cuadra al este, Juigalpa, Nicaragua</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 sm:gap-4">
+                                <div
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/10 flex items-center justify-center text-primary text-base sm:text-xl flex-shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Teléfono</h4>
+                                    <p class="text-gray-300">+505 8628 9512</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 sm:gap-4">
+                                <div
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/10 flex items-center justify-center text-primary text-base sm:text-xl flex-shrink-0">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Horario</h4>
+                                    <p class="text-gray-300">Abierto 24/7</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 sm:gap-4">
+                                <div
+                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/10 flex items-center justify-center text-primary text-base sm:text-xl flex-shrink-0">
+                                    <i class="fa-solid fa-hashtag"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Redes Sociales</h4>
+                                    <p class="text-gray-300">Síguenos en nuestras redes:</p>
+                                    <div class="flex gap-2 sm:gap-3 mt-1 sm:mt-2">
+                                        <a href="https://www.facebook.com/profile.php?id=100064038700639&locale=es_LA"
+                                            target="_blank" rel="noopener"
+                                            class="social-icon facebook w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#1877f2] transition text-sm sm:text-lg">
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                        </a>
+                                        <a href="https://www.tiktok.com/@powergym2001?_r=1&_t=ZS-97YHyHy84Xc"
+                                            target="_blank" rel="noopener"
+                                            class="social-icon tiktok w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-black transition text-sm sm:text-lg">
+                                            <i class="fa-brands fa-tiktok"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <form id="contact-form" class="bg-white rounded-lg p-6 sm:p-8 shadow-glow">
-                        <div class="grid md:grid-cols-2 gap-4 mb-4">
-                            <label class="sr-only" for="name">Tu nombre</label>
-                            <input id="name" type="text" placeholder="Tu nombre" required
-                                class="w-full px-5 py-4 rounded-lg bg-gray-50 border border-gray-200 text-ink placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
-
-                            <label class="sr-only" for="phone">Tu WhatsApp</label>
-                            <input id="phone" type="tel" placeholder="Tu WhatsApp" required
-                                class="w-full px-5 py-4 rounded-lg bg-gray-50 border border-gray-200 text-ink placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary">
-                        </div>
-
-                        <label class="sr-only" for="email">Tu email</label>
-                        <input id="email" type="email" placeholder="Tu email" required
-                            class="w-full px-5 py-4 rounded-lg bg-gray-50 border border-gray-200 text-ink placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary mb-4">
-
-                        <button type="submit" class="btn-primary w-full px-6 py-4 text-base">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            Obtener mi prueba gratis
-                        </button>
-                    </form>
+                    <div class="bg-white text-ink p-6 sm:p-8 rounded-2xl shadow-glow" data-aos="fade-left">
+                        <h3 class="text-xl sm:text-2xl font-black mb-1">Contacto Directo vía WhatsApp</h3>
+                        <p class="text-muted mb-4 sm:mb-6">Cuéntanos tu objetivo y te ayudaremos a lograrlo.</p>
+                        <form id="contact-form" class="space-y-4 sm:space-y-5">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-1" for="name">Tu Nombre</label>
+                                <input id="name" type="text" placeholder="Ej. Carlos Mendoza" required
+                                    class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary text-sm sm:text-base">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-1" for="phone">Número de
+                                    WhatsApp</label>
+                                <input id="phone" type="tel" placeholder="Ej. 8628 9512" required
+                                    class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary text-sm sm:text-base">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-1" for="message">¿Qué objetivo
+                                    tienes?</label>
+                                <textarea id="message" rows="3"
+                                    placeholder="Ej. Quiero perder peso, ganar masa muscular o comprar suplementos..."
+                                    required
+                                    class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary text-sm sm:text-base"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full py-3 sm:py-4 text-sm sm:text-base">
+                                <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i> Enviar mensaje
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA FINAL -->
-        <section class="py-24 bg-primary text-white">
-            <div class="max-w-5xl mx-auto px-4 text-center" data-aos="zoom-in">
-                <h2 class="text-5xl font-black mb-6">
+        <!-- ===== CTA FINAL ===== -->
+        <section class="py-16 sm:py-24 bg-primary text-white w-full max-w-full overflow-hidden">
+            <div class="max-w-4xl mx-auto px-4 text-center" data-aos="zoom-in">
+                <h2 class="text-3xl sm:text-5xl font-black mb-4 sm:mb-6">
                     Empieza hoy
                 </h2>
-                <p class="text-xl mb-8 opacity-90">
-                    Tu mejor versión está esperando.
+                <p class="text-lg sm:text-xl mb-6 sm:mb-8 opacity-90">
+                    Tu mejor versión está esperando. <br class="sm:hidden"> ¡Únete a PowerGym!
                 </p>
                 <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
-                    class="bg-white text-primary px-10 py-5 rounded-full font-black inline-flex items-center gap-3 shadow-xl hover:scale-105 transition-transform duration-180">
+                    class="inline-flex items-center gap-3 bg-white text-primary px-8 sm:px-12 py-4 sm:py-5 rounded-full font-black text-base sm:text-lg shadow-xl hover:scale-105 transition-transform duration-180">
                     <i class="fa-brands fa-whatsapp"></i>
                     Escribir por WhatsApp
                 </a>
             </div>
         </section>
+
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-black border-t border-white/10 py-12 text-white">
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-black text-white border-t border-white/5 py-10 sm:py-14 w-full max-w-full overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="imagenes/Logo PowerGym.jpg" alt="PowerGym Logo"
-                            class="w-10 h-10 object-contain rounded-lg">
-                        <span class="font-heading font-black text-xl">Power<span class="text-primary">Gym</span></span>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-10">
+
+                <div class="flex flex-col items-center gap-2">
+                    <img src="imagenes/Logo PowerGym.jpg" alt="Logo PowerGym"
+                        class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl opacity-95" loading="lazy"
+                        decoding="async">
+                    <div class="text-center">
+                        <h4 class="font-heading font-black text-xl sm:text-2xl">Power<span
+                                class="text-primary">Gym</span>
+                        </h4>
+                        <p class="text-gray-400 text-sm sm:text-base">El gimnasio #1 de Juigalpa</p>
                     </div>
-                    <p class="text-gray-300 text-sm mb-3">2.7 mil seguidores</p>
-                    <p class="text-gray-300 text-sm">PowerGYM · EliteGYM · PowerFitness</p>
                 </div>
-                <div>
-                    <h4 class="font-bold text-white mb-4">Ubicación</h4>
-                    <p class="text-gray-300 text-sm leading-relaxed">Disnorte 1/2 cuadra al este, Juigalpa, Nicaragua,
-                        55000</p>
+
+                <div class="text-center">
+                    <h5 class="font-bold text-white text-base sm:text-lg mb-3">Ubicación</h5>
+                    <p class="text-gray-400 text-sm sm:text-base">Disnorte 1/2 cuadra al este</p>
+                    <p class="text-gray-400 text-sm sm:text-base">Juigalpa, Nicaragua</p>
                 </div>
-                <div>
-                    <h4 class="font-bold text-white mb-4">Contacto</h4>
-                    <p class="text-gray-300 text-sm mb-2"><i class="fa-solid fa-phone text-primary mr-2"></i>+505 8628
-                        9512</p>
-                    <p class="text-gray-300 text-sm"><i class="fa-solid fa-clock text-primary mr-2"></i>24/7 abierto</p>
+
+                <div class="text-center">
+                    <h5 class="font-bold text-white text-base sm:text-lg mb-3">Contacto</h5>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        <i class="fa-solid fa-phone text-primary mr-2"></i>+505 8628 9512
+                    </p>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        <i class="fa-solid fa-clock text-primary mr-2"></i>24/7 abierto
+                    </p>
                 </div>
-                <div>
-                    <h4 class="font-bold text-white mb-4">Síguenos</h4>
-                    <div class="flex gap-3 mb-4">
-                        <a href="https://instagram.com" target="_blank" rel="noopener"
-                            class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
-                            aria-label="Instagram">
-                            <i class="fa-brands fa-instagram"></i>
+
+                <div class="text-center">
+                    <h5 class="font-bold text-white text-base sm:text-lg mb-3">Síguenos</h5>
+                    <div class="flex justify-center gap-3">
+                        <a href="https://www.facebook.com/profile.php?id=100064038700639&locale=es_LA" target="_blank"
+                            rel="noopener" class="social-icon facebook w-12 h-12 sm:w-14 sm:h-14">
+                            <i class="fa-brands fa-facebook-f text-lg sm:text-xl"></i>
                         </a>
-                        <a href="https://tiktok.com" target="_blank" rel="noopener"
-                            class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-colors"
-                            aria-label="TikTok">
-                            <i class="fa-brands fa-tiktok"></i>
+                        <a href="https://www.tiktok.com/@powergym2001?_r=1&_t=ZS-97YHyHy84Xc" target="_blank"
+                            rel="noopener" class="social-icon tiktok w-12 h-12 sm:w-14 sm:h-14">
+                            <i class="fa-brands fa-tiktok text-lg sm:text-xl"></i>
                         </a>
                         <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
-                            class="w-10 h-10 rounded-full bg-white/10 hover:bg-green-600 flex items-center justify-center transition-colors"
-                            aria-label="WhatsApp">
-                            <i class="fa-brands fa-whatsapp"></i>
+                            class="social-icon whatsapp w-12 h-12 sm:w-14 sm:h-14">
+                            <i class="fa-brands fa-whatsapp text-lg sm:text-xl"></i>
                         </a>
                     </div>
+                    <div class="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1">
+                        <a href="#inicio" class="text-gray-400 hover:text-primary transition text-sm sm:text-base">Inicio</a>
+                        <a href="#sobre" class="text-gray-400 hover:text-primary transition text-sm sm:text-base">Sobre</a>
+                        <a href="#productos" class="text-gray-400 hover:text-primary transition text-sm sm:text-base">Productos</a>
+                        <a href="#instalaciones" class="text-gray-400 hover:text-primary transition text-sm sm:text-base">Instalaciones</a>
+                        <a href="#contacto" class="text-gray-400 hover:text-primary transition text-sm sm:text-base">Contacto</a>
+                    </div>
                 </div>
+
             </div>
-            <div class="border-t border-white/10 pt-8 text-center text-gray-400 text-sm">
-                <p class="mb-2">La Casa de los Campeones</p>
-                <p class="mb-2">Fuerza · Disciplina · Resultados</p>
-                <p>&copy; 2026 PowerGym Juigalpa, Nicaragua</p>
+            <div class="border-t border-white/5 pt-5 sm:pt-7 text-center text-gray-500 text-sm sm:text-base">
+                <p>&copy; 2026 PowerGym Juigalpa, Nicaragua. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- MODAL DE ÉXITO -->
-    <div id="success-modal">
-        <div
-            class="bg-white border border-primary p-8 rounded-lg max-w-sm w-full text-center relative transform scale-95 transition-transform duration-300">
-            <div
-                class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-3xl mx-auto mb-4">
-                <i class="fa-solid fa-check"></i>
-            </div>
-            <h3 class="text-3xl font-black text-ink mb-2">¡Listo!</h3>
-            <p class="text-muted mb-6">Nos pondremos en contacto en menos de una hora para activar tu prueba gratis.</p>
-            <button id="close-modal-btn" type="button" class="btn-primary w-full px-6 py-4">Entendido</button>
-        </div>
-    </div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+    </script>
     <script>
-        AOS.init({ duration: 700, once: true, offset: 50 });
+        // ===== AOS CONFIG =====
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 40,
+            easing: 'ease-out-cubic'
+        });
 
-        const contactForm = document.getElementById('contact-form');
-        const successModal = document.getElementById('success-modal');
-        const closeModalBtn = document.getElementById('close-modal-btn');
+        // ===== DATOS DEL MENÚ - SIN "TODOS" =====
+        const menuData = [{
+            id: 'proteina',
+            category: "Proteína",
+            icon: "fa-solid fa-droplet",
+            img: "imagenes/Proteinas.jpg",
+            beneficiosImg: "imagenes/Beneficios Proteina.jpg",
+            type: "productos",
+            items: [{
+                name: "Proteína Whey",
+                desc: "Proteína de suero de leche de alta calidad para recuperación muscular y ganancia de masa.",
+                price: "C$ 850",
+                img: "imagenes/Proteinas.jpg",
+                beneficiosImg: "imagenes/Beneficios Proteina.jpg"
+            }]
+        }, {
+            id: 'creatina',
+            category: "Creatina",
+            icon: "fa-solid fa-bolt",
+            img: "imagenes/Creatina.jpg",
+            beneficiosImg: "imagenes/Beneficios Creatina.jpg",
+            type: "productos",
+            items: [{
+                name: "Creatina Monohidratada",
+                desc: "La creatina más estudiada y efectiva para aumentar fuerza y rendimiento.",
+                price: "C$ 650",
+                img: "imagenes/Creatina.jpg",
+                beneficiosImg: "imagenes/Beneficios Creatina.jpg"
+            }]
+        }, {
+            id: 'preentreno',
+            category: "Pre-Entreno",
+            icon: "fa-solid fa-bolt",
+            img: "imagenes/Pre-entreno.jpg",
+            beneficiosImg: "imagenes/Beneficios Pre_entreno.jpg",
+            type: "productos",
+            items: [{
+                name: "Pre-Entreno Intenso",
+                desc: "Fórmula avanzada para máxima energía, enfoque y pump durante tu entrenamiento.",
+                price: "C$ 550",
+                img: "imagenes/Pre-entreno.jpg",
+                beneficiosImg: "imagenes/Beneficios Pre_entreno.jpg"
+            }]
+        }];
+
+        // ===== REFERENCIAS =====
+        const categoriesGrid = document.getElementById('categories-grid');
+        const mainView = document.getElementById('main-view');
+        const subview = document.getElementById('subview');
+        const subviewBody = document.getElementById('subview-body');
+        const backBtn = document.getElementById('back-btn');
+
+        let currentCategoryId = null;
+        let isSubViewOpen = false;
+
+        // ===== RENDERIZAR CATEGORÍAS - SIN "TODOS" =====
+        function renderCategories() {
+            categoriesGrid.innerHTML = '';
+
+            // La primera categoría se marca como activa por defecto
+            let firstCategory = true;
+
+            menuData.forEach(cat => {
+                const card = document.createElement('div');
+                card.className = `category-card ${firstCategory ? 'active border-2 border-primary shadow-lg shadow-primary/20' : ''}`;
+                card.innerHTML = `
+                            <img src="${cat.img}" alt="${cat.category}" loading="lazy">
+                            <div class="overlay">
+                                <h3>${cat.category}</h3>
+                                <p>${cat.items.length} producto</p>
+                            </div>
+                            <span class="count-badge">${cat.items.length}</span>
+                        `;
+                card.dataset.category = cat.id;
+                card.addEventListener('click', () => openSubview(cat.id));
+                categoriesGrid.appendChild(card);
+
+                // Si es la primera categoría, la abrimos automáticamente
+                if (firstCategory) {
+                    firstCategory = false;
+                    // Abrir la primera categoría después de un breve delay
+                    setTimeout(() => {
+                        openSubview(cat.id);
+                    }, 300);
+                }
+            });
+        }
+
+        // ===== INICIALIZAR CARRUSELES =====
+        function initCarouselsInSubview() {
+            const carousels = subviewBody.querySelectorAll('[data-carousel]');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            carousels.forEach((carousel, carouselIndex) => {
+                const track = carousel.querySelector('.product-carousel-track');
+                const slides = carousel.querySelectorAll('.product-carousel-slide');
+                const dotsContainer = carousel.querySelector('.carousel-dots');
+                let currentSlide = 0;
+
+                function loadSlideImage(index) {
+                    const image = slides[index]?.querySelector('img[data-src]');
+                    if (image?.dataset.src) {
+                        image.src = image.dataset.src;
+                        image.removeAttribute('data-src');
+                    }
+                }
+
+                if (dotsContainer) {
+                    dotsContainer.innerHTML = '';
+                    slides.forEach((_, index) => {
+                        const dot = document.createElement('button');
+                        dot.type = 'button';
+                        dot.className = 'carousel-dot';
+                        dot.setAttribute('aria-label', `Ver foto ${index + 1}`);
+                        dot.tabIndex = -1;
+                        dotsContainer.appendChild(dot);
+                    });
+                }
+
+                const dots = dotsContainer?.querySelectorAll('.carousel-dot') || [];
+
+                function goToSlide(index) {
+                    currentSlide = (index + slides.length) % slides.length;
+                    loadSlideImage(currentSlide);
+                    if (track) {
+                        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    }
+                    dots.forEach((dot, dotIndex) => {
+                        dot.classList.toggle('active', dotIndex === currentSlide);
+                    });
+                }
+
+                goToSlide(0);
+
+                if (!reduceMotion && slides.length > 1) {
+                    const intervalDelay = 3200 + ((carouselIndex % 3) * 350);
+                    const startDelay = 450 + (carouselIndex * 260);
+                    const advanceCarousel = () => {
+                        loadSlideImage((currentSlide + 1) % slides.length);
+                        goToSlide(currentSlide + 1);
+                    };
+                    setTimeout(() => {
+                        advanceCarousel();
+                        setInterval(advanceCarousel, intervalDelay);
+                    }, startDelay);
+                }
+            });
+        }
+
+        // ===== ABRIR SUBVISTA =====
+        function openSubview(categoryId) {
+            currentCategoryId = categoryId;
+            isSubViewOpen = true;
+
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.classList.remove('active', 'border-2', 'border-primary', 'shadow-lg', 'shadow-primary/20');
+                if (card.dataset.category === categoryId) {
+                    card.classList.add('active', 'border-2', 'border-primary', 'shadow-lg', 'shadow-primary/20');
+                }
+            });
+
+            mainView.style.display = 'none';
+
+            const category = menuData.find(c => c.id === categoryId);
+            if (!category) return;
+
+            const categoryName = category.category;
+            const itemsToShow = category.items.map(item => ({
+                ...item,
+                category: category.id,
+                categoryName: category.category
+            }));
+
+            subviewBody.innerHTML = `
+                        <h2 class="font-heading text-2xl sm:text-3xl font-black text-ink mb-1">${categoryName}</h2>
+                        <p class="text-muted text-sm mb-6">${itemsToShow.length} producto disponible</p>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            ${itemsToShow.map((item) => {
+                let detailsHTML = '';
+                if (item.category === 'proteina') {
+                    detailsHTML = `
+                                        <span><i class="fa-solid fa-droplet"></i> Proteína</span>
+                                        <span><i class="fa-solid fa-weight-hanging"></i> Masa muscular</span>
+                                    `;
+                } else if (item.category === 'creatina') {
+                    detailsHTML = `
+                                        <span><i class="fa-solid fa-bolt"></i> Fuerza</span>
+                                        <span><i class="fa-solid fa-fire"></i> Rendimiento</span>
+                                    `;
+                } else {
+                    detailsHTML = `
+                                        <span><i class="fa-solid fa-bolt"></i> Energía</span>
+                                        <span><i class="fa-solid fa-brain"></i> Enfoque</span>
+                                    `;
+                }
+
+                return `
+                                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-all">
+                                        <div class="product-carousel" data-carousel>
+                                            <div class="product-carousel-track">
+                                                <div class="product-carousel-slide">
+                                                    <img src="${item.img}" alt="${item.name}" loading="lazy" decoding="async">
+                                                </div>
+                                                <div class="product-carousel-slide">
+                                                    <img src="${item.beneficiosImg}" alt="${item.name} - Beneficios"
+                                                        loading="lazy" decoding="async">
+                                                </div>
+                                            </div>
+                                            <div class="carousel-dots" aria-hidden="true"></div>
+                                        </div>
+                                        <div class="p-4">
+                                            <div class="flex items-start justify-between">
+                                                <h3 class="font-bold text-lg text-ink">${item.name}</h3>
+                                                <span class="font-black text-primary text-base">${item.price}</span>
+                                            </div>
+                                            <p class="text-muted text-sm mt-1">${item.desc}</p>
+                                            <div class="product-details">
+                                                ${detailsHTML}
+                                            </div>
+                                            <button onclick="orderItem('${item.name}')" class="w-full btn-primary mt-3 py-2.5 text-sm">
+                                                <i class="fa-brands fa-whatsapp"></i> Comprar por WhatsApp
+                                            </button>
+                                        </div>
+                                    </div>
+                                `;
+            }).join('')}
+                        </div>
+                    `;
+
+            subview.classList.add('active');
+
+            setTimeout(() => {
+                initCarouselsInSubview();
+            }, 150);
+
+            const menuSection = document.getElementById('productos');
+            if (menuSection) {
+                const headerOffset = 80;
+                const elementPosition = menuSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+
+            const categoryNameForUrl = categoryId;
+            const newUrl = `${window.location.pathname}?categoria=${categoryNameForUrl}#productos`;
+            window.history.pushState({ category: categoryId }, '', newUrl);
+        }
+
+        // ===== CERRAR SUBVISTA =====
+        function closeSubview() {
+            isSubViewOpen = false;
+            subview.classList.remove('active');
+            mainView.style.display = 'block';
+
+            window.scrollTo({ top: document.getElementById('productos').offsetTop - 80, behavior: 'smooth' });
+
+            if (window.location.search.includes('categoria')) {
+                const cleanUrl = window.location.pathname + '#productos';
+                window.history.pushState({}, '', cleanUrl);
+            }
+        }
+
+        // ===== EVENTOS =====
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.category) {
+                openSubview(event.state.category);
+            } else if (isSubViewOpen) {
+                closeSubview();
+            }
+        });
+
+        backBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeSubview();
+            if (window.location.search.includes('categoria')) {
+                window.history.replaceState({}, '', window.location.pathname + '#productos');
+            }
+        });
+
+        // ===== FUNCIÓN PARA ORDENAR =====
+        function orderItem(name) {
+            const text = `Hola PowerGym, quiero comprar: ${name}`;
+            window.open(`https://wa.me/50586289512?text=${encodeURIComponent(text)}`, "_blank");
+        }
+
+        // ===== HERO CAROUSEL =====
+        const heroCarousels = document.querySelectorAll('[data-hero-carousel]');
+
+        function loadDeferredImage(image) {
+            if (!image?.dataset.src) return;
+            image.src = image.dataset.src;
+            image.removeAttribute('data-src');
+        }
+
+        heroCarousels.forEach(carousel => {
+            const slides = carousel.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+
+            function goToHeroSlide(index) {
+                currentSlide = (index + slides.length) % slides.length;
+                loadDeferredImage(slides[currentSlide]);
+                slides.forEach((slide, slideIndex) => {
+                    slide.classList.toggle('active', slideIndex === currentSlide);
+                });
+            }
+
+            goToHeroSlide(0);
+            if (slides.length > 1) {
+                setInterval(() => {
+                    loadDeferredImage(slides[(currentSlide + 1) % slides.length]);
+                    goToHeroSlide(currentSlide + 1);
+                }, 3300);
+            }
+        });
+
+        // ===== MOBILE MENU =====
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const logoBtn = document.getElementById('brand-logo-btn');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        function closeMobileMenu() {
+            mobileMenu.style.maxHeight = "0px";
+            mobileMenu.classList.remove('border-b');
+            menuIcon.className = 'fa-solid fa-bars text-xl';
+        }
+
+        function openMobileMenu() {
+            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+            mobileMenu.classList.add('border-b');
+            menuIcon.className = 'fa-solid fa-xmark text-xl';
+        }
+
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (mobileMenu.style.maxHeight === "0px" || !mobileMenu.style.maxHeight) {
+                openMobileMenu();
+            } else {
+                closeMobileMenu();
+            }
         });
+
+        logoBtn.addEventListener('click', () => {
+            closeMobileMenu();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => closeMobileMenu());
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // ===== CONTACT FORM =====
+        const contactForm = document.getElementById('contact-form');
 
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            successModal.classList.add('active');
-            setTimeout(() => {
-                successModal.querySelector('div').classList.remove('scale-95');
-                successModal.querySelector('div').classList.add('scale-100');
-            }, 10);
+
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone || !message) {
+                alert('Por favor, completa todos los campos.');
+                return;
+            }
+
+            const baseText =
+                `Hola PowerGym, soy ${name} (Tel: ${phone}). Mi objetivo es: ${message}`;
+            const whatsappUrl = `https://wa.me/50586289512?text=${encodeURIComponent(baseText)}`;
+            window.open(whatsappUrl, '_blank');
             contactForm.reset();
         });
 
-        closeModalBtn.addEventListener('click', () => {
-            successModal.querySelector('div').classList.remove('scale-100');
-            successModal.querySelector('div').classList.add('scale-95');
-            setTimeout(() => {
-                successModal.classList.remove('active');
-            }, 180);
-        });
-
+        // ===== SCROLL SUAVE =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(targetId);
                 if (target) {
-                    mobileMenu.classList.add('hidden');
                     const headerOffset = 80;
                     const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    const offsetPosition = elementPosition + window.scrollY - headerOffset;
                     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                 }
             });
         });
+
+        // ===== INICIALIZAR =====
+        renderCategories();
+
+        // ===== VERIFICAR PARÁMETROS DE URL =====
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoriaParam = urlParams.get('categoria');
+        if (categoriaParam) {
+            const categoryExists = menuData.some(cat => cat.id === categoriaParam);
+            if (categoryExists) {
+                setTimeout(() => {
+                    openSubview(categoriaParam);
+                }, 300);
+            }
+        }
     </script>
 </body>
 
