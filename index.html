@@ -51,6 +51,7 @@
     </script>
 
     <style>
+        /* ===== RESET & BASE ===== */
         * {
             box-sizing: border-box;
         }
@@ -86,17 +87,35 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        /* ===== NAV ===== */
         .nav-link {
             color: #374151;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             transition: color 180ms ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #dc2626;
+            transition: width 300ms ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         .nav-link:hover {
             color: #dc2626;
         }
 
+        /* ===== BOTONES ===== */
         .btn-primary {
             min-height: 48px;
             display: inline-flex;
@@ -105,19 +124,23 @@
             gap: 0.5rem;
             border-radius: 999px;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1rem;
             background: #dc2626;
             color: #fff;
             box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
             transition: all 180ms ease;
             position: relative;
             overflow: hidden;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            cursor: pointer;
             width: 100%;
         }
 
         .btn-primary:hover {
             background: #991b1b;
             transform: translateY(-2px);
+            box-shadow: 0 14px 35px rgba(220, 38, 38, 0.4);
         }
 
         .btn-primary::after {
@@ -134,6 +157,28 @@
             transform: translateX(120%);
         }
 
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            background: transparent;
+            transition: all 180ms ease;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        /* ===== HERO ===== */
         .hero-section {
             min-height: calc(100svh - 80px);
             background: #111827;
@@ -152,7 +197,7 @@
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: linear-gradient(180deg, rgba(17, 24, 39, 0.8) 0%, rgba(17, 24, 39, 0.65) 100%);
+            background: linear-gradient(180deg, rgba(17, 24, 39, 0.75) 0%, rgba(17, 24, 39, 0.6) 100%);
         }
 
         .hero-slide {
@@ -185,6 +230,29 @@
             z-index: 2;
         }
 
+        @keyframes hero-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes hero-image-reveal {
+            from {
+                opacity: 0;
+                transform: scale(1.02);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* ===== WHATSAPP FLOTANTE ===== */
         .floating-whatsapp {
             position: fixed;
             right: clamp(1rem, 3vw, 2rem);
@@ -202,6 +270,7 @@
             box-shadow: 0 14px 32px rgba(37, 211, 102, 0.38);
             animation: pulse-green 2.2s infinite;
             transition: transform 180ms ease;
+            text-decoration: none;
         }
 
         .floating-whatsapp:hover {
@@ -209,11 +278,24 @@
             animation: none;
         }
 
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* ===== BRAND ===== */
         .brand-logo {
-            width: 56px;
-            height: 56px;
+            width: 50px;
+            height: 50px;
             object-fit: cover;
-            border-radius: 14px;
+            border-radius: 12px;
             box-shadow: 0 4px 15px rgba(220, 38, 38, 0.25);
             border: 2px solid rgba(220, 38, 38, 0.15);
             transition: transform 300ms ease, box-shadow 300ms ease;
@@ -227,7 +309,7 @@
         .brand-name {
             font-family: 'Poppins', sans-serif;
             font-weight: 900;
-            font-size: 1.7rem;
+            font-size: 1.5rem;
             line-height: 1.1;
             color: #111827;
             letter-spacing: -0.02em;
@@ -238,21 +320,22 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
         }
 
+        /* ===== SOCIAL ICONS ===== */
         .social-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 999px;
             background: rgba(255, 255, 255, 0.08);
             color: #fff;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             transition: all 300ms ease;
             border: 1px solid rgba(255, 255, 255, 0.06);
+            text-decoration: none;
         }
 
         .social-icon:hover {
@@ -278,10 +361,51 @@
             box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
         }
 
-        /* ===== CATEGORÍAS - MÁS VERTICALES ===== */
+        /* ===== STATS ===== */
+        .hero-stat {
+            opacity: 0;
+            animation: fade-up 700ms ease forwards;
+        }
+
+        .hero-stat:nth-child(1) {
+            animation-delay: 400ms;
+        }
+        .hero-stat:nth-child(2) {
+            animation-delay: 500ms;
+        }
+        .hero-stat:nth-child(3) {
+            animation-delay: 600ms;
+        }
+        .hero-stat:nth-child(4) {
+            animation-delay: 700ms;
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scale-in {
+            from {
+                opacity: 0;
+                transform: scale(0.92);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* ===== CATEGORÍAS ===== */
         .category-card {
             position: relative;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -316,8 +440,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 1.5rem 1rem 1rem;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+            padding: 1.5rem 1rem 1.2rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
             color: white;
             text-align: center;
         }
@@ -325,12 +449,12 @@
         .category-card .overlay h3 {
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
-            font-size: 1.2rem;
-            margin-bottom: 0.15rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.1rem;
         }
 
         .category-card .overlay p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             opacity: 0.7;
         }
 
@@ -340,9 +464,9 @@
             right: 0.75rem;
             background: rgba(220, 38, 38, 0.9);
             color: white;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
-            padding: 0.25rem 0.7rem;
+            padding: 0.2rem 0.6rem;
             border-radius: 999px;
             backdrop-filter: blur(4px);
         }
@@ -350,7 +474,7 @@
         /* ===== PRODUCT CAROUSEL - MÁS VERTICAL ===== */
         .product-carousel {
             position: relative;
-            height: 30rem;
+            height: 34rem;
             overflow: hidden;
             background: #f3f4f6;
             contain: layout paint;
@@ -389,50 +513,53 @@
         }
 
         .carousel-dot {
-            width: 0.55rem;
-            height: 0.55rem;
+            width: 0.5rem;
+            height: 0.5rem;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.62);
+            background: rgba(255, 255, 255, 0.6);
             transition: background-color 180ms ease, transform 180ms ease;
         }
 
         .carousel-dot.active {
             background: #dc2626;
-            transform: scale(1.2);
+            transform: scale(1.3);
         }
 
+        /* ===== PRODUCT DETAILS ===== */
         .product-details {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 0.85rem;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
         }
 
         .product-details span {
             display: inline-flex;
             align-items: center;
-            gap: 0.45rem;
+            gap: 0.4rem;
             border-radius: 999px;
             background: #f1f5f9;
             border: 1px solid #e2e8f0;
             color: #334155;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            padding: 0.45rem 0.9rem;
+            padding: 0.35rem 0.8rem;
             line-height: 1.3;
         }
 
         .product-details span i {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #dc2626;
         }
 
+        /* ===== GRIDS ===== */
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 1.25rem;
         }
 
+        /* ===== SUBVIEW ===== */
         .subview {
             display: none;
             animation: subview-in 350ms ease both;
@@ -442,16 +569,27 @@
             display: block;
         }
 
+        @keyframes subview-in {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .subview .back-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.6rem;
             color: #374151;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: color 0.2s ease;
             cursor: pointer;
-            padding: 0.85rem 1.5rem;
+            padding: 0.7rem 1.2rem;
             border: 2px solid #e5e7eb;
             background: white;
             border-radius: 12px;
@@ -467,164 +605,7 @@
             box-shadow: 0 8px 25px rgba(220, 38, 38, 0.1);
         }
 
-        .subview .back-btn i {
-            font-size: 1.2rem;
-        }
-
-        .subview h2 {
-            font-size: 2.2rem !important;
-        }
-
-        .subview .text-muted {
-            font-size: 1.05rem !important;
-        }
-
-        .subview .text-sm {
-            font-size: 0.95rem !important;
-        }
-
-        .subview .text-base {
-            font-size: 1.05rem !important;
-        }
-
-        .subview .btn-primary {
-            font-size: 1rem !important;
-        }
-
-        @keyframes subview-in {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse-green {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
-            }
-
-            70% {
-                box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        @keyframes hero-reveal {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes hero-image-reveal {
-            from {
-                opacity: 0;
-                transform: translateY(-10px) scale(1.02);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        @keyframes fade-up {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes scale-in {
-            from {
-                opacity: 0;
-                transform: scale(0.92);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes slide-right {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Hero stats */
-        .hero-stat {
-            opacity: 0;
-            animation: fade-up 700ms ease forwards;
-        }
-
-        .hero-stat:nth-child(1) {
-            animation-delay: 400ms;
-        }
-
-        .hero-stat:nth-child(2) {
-            animation-delay: 500ms;
-        }
-
-        .hero-stat:nth-child(3) {
-            animation-delay: 600ms;
-        }
-
-        .hero-stat:nth-child(4) {
-            animation-delay: 700ms;
-        }
-
-        .category-card {
-            opacity: 0;
-            animation: scale-in 600ms ease forwards;
-        }
-
-        .category-card:nth-child(1) {
-            animation-delay: 100ms;
-        }
-
-        .category-card:nth-child(2) {
-            animation-delay: 180ms;
-        }
-
-        .category-card:nth-child(3) {
-            animation-delay: 260ms;
-        }
-
-        .category-card:nth-child(4) {
-            animation-delay: 340ms;
-        }
-
-        #navbar {
-            animation: fade-up 500ms ease forwards;
-        }
-
-        /* ===== SOBRE NOSOTROS - MODERNO ===== */
+        /* ===== SOBRE NOSOTROS ===== */
         .about-card {
             background: linear-gradient(145deg, #0f1724 0%, #1a1f2e 100%);
             border-radius: 24px;
@@ -665,9 +646,9 @@
             gap: 0.5rem;
             background: rgba(220, 38, 38, 0.15);
             color: #dc2626;
-            padding: 0.4rem 1rem;
+            padding: 0.35rem 0.9rem;
             border-radius: 999px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
@@ -678,29 +659,106 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 1.1rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.4rem 0.9rem;
             border-radius: 999px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
             transition: all 0.3s ease;
         }
 
         .about-card .feature-tag:hover {
-            background: rgba(220, 38, 38, 0.2);
-            border-color: rgba(220, 38, 38, 0.4);
+            background: rgba(220, 38, 38, 0.15);
+            border-color: rgba(220, 38, 38, 0.3);
             color: #fff;
         }
 
         .about-card .feature-tag i {
             color: #dc2626;
+        }
+
+        /* ===== HORARIOS ===== */
+        .schedule-card {
+            background: linear-gradient(145deg, #0f1724 0%, #1a1f2e 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        .schedule-card .day-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .schedule-card .day-item:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-card .day-item:hover {
+            background: rgba(255, 255, 255, 0.03);
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            border-radius: 8px;
+        }
+
+        .schedule-card .day-name {
+            font-weight: 700;
             font-size: 1rem;
+            color: #fff;
+            min-width: 70px;
+        }
+
+        .schedule-card .day-time {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* ===== MOTIVACIÓN ===== */
+        .motivation-card {
+            background: linear-gradient(145deg, #0f1724 0%, #1a1f2e 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+
+        .motivation-card .content-wrapper {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .motivation-card .big-icon {
+            font-size: 3.5rem;
+            color: #dc2626;
+            margin-bottom: 1.5rem;
+        }
+
+        .motivation-card h3 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .motivation-card h3 span {
+            color: #dc2626;
+        }
+
+        .motivation-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 1rem auto 2rem;
+            line-height: 1.6;
         }
 
         /* ============================================================ */
-        /* ===== RESPONSIVE MÓVIL ===== */
+        /* ===== RESPONSIVE ===== */
         /* ============================================================ */
 
         @media (max-width: 640px) {
@@ -741,41 +799,70 @@
             }
 
             .brand-logo {
-                width: 44px;
-                height: 44px;
+                width: 42px;
+                height: 42px;
             }
 
             .brand-name {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
 
             .btn-primary {
                 width: 100%;
-                min-height: 50px;
-                font-size: 1rem;
-                padding: 0.75rem 1rem;
+                min-height: 48px;
+                font-size: 0.95rem;
+                padding: 0.7rem 1rem;
             }
 
+            /* ===== NAV MÓVIL MÁS ANCHO ===== */
+            .nav-link {
+                font-size: 1rem !important;
+                padding: 0.75rem 1rem !important;
+            }
+
+            #mobile-menu .grid {
+                gap: 0.25rem !important;
+            }
+
+            #mobile-menu .mobile-nav-link {
+                padding: 0.85rem 1.25rem !important;
+                font-size: 1.05rem !important;
+                border-radius: 12px !important;
+            }
+
+            #mobile-menu .pt-3 {
+                padding-top: 0.75rem !important;
+            }
+
+            #mobile-menu .px-4 {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+
+            /* ===== CATEGORÍAS MÁS GRANDES EN MÓVIL ===== */
             .categories-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.75rem;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
             }
 
             .category-card {
-                aspect-ratio: 2 / 3;
+                aspect-ratio: 3 / 4 !important;
+                border-radius: 20px !important;
             }
 
             .category-card .overlay h3 {
-                font-size: 0.95rem;
+                font-size: 1.1rem !important;
             }
 
             .category-card .overlay p {
-                font-size: 0.7rem;
+                font-size: 0.85rem !important;
             }
 
             .category-card .count-badge {
-                font-size: 0.7rem;
-                padding: 0.15rem 0.5rem;
+                font-size: 0.85rem !important;
+                padding: 0.25rem 0.8rem !important;
+                top: 0.6rem !important;
+                right: 0.6rem !important;
             }
 
             .subview .grid {
@@ -783,27 +870,24 @@
             }
 
             .subview .back-btn {
-                font-size: 1.05rem;
-                padding: 0.7rem 1.2rem;
+                font-size: 0.95rem;
+                padding: 0.6rem 1rem;
                 width: 100%;
                 justify-content: center;
             }
 
             .subview h2 {
-                font-size: 1.7rem !important;
-            }
-
-            .subview .text-muted {
-                font-size: 0.95rem !important;
+                font-size: 1.5rem !important;
             }
 
             .product-details span {
-                font-size: 0.75rem;
-                padding: 0.35rem 0.7rem;
+                font-size: 0.7rem;
+                padding: 0.3rem 0.6rem;
             }
 
+            /* ===== PRODUCT CAROUSEL MÁS VERTICAL EN MÓVIL ===== */
             .product-carousel {
-                height: 22rem;
+                height: 24rem;
             }
 
             section {
@@ -811,48 +895,67 @@
                 padding-bottom: 2.5rem !important;
             }
 
-            #contacto .p-8 {
-                padding: 1.5rem !important;
-            }
-
-            /* ===== SOBRE NOSOTROS EN MÓVIL - TIPOGRAFÍA GRANDE ===== */
             .about-card .image-wrapper {
                 min-height: 200px;
             }
 
-            .about-card .image-wrapper .gradient-overlay {
-                background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
-            }
-
             .about-card .content-wrapper {
-                padding: 1.8rem 1.5rem;
+                padding: 1.5rem 1.2rem;
             }
 
             .about-card .content-wrapper h3 {
-                font-size: 1.8rem !important;
-                line-height: 1.2;
+                font-size: 1.6rem !important;
             }
 
             .about-card .content-wrapper p {
-                font-size: 1rem !important;
-                line-height: 1.6;
+                font-size: 0.95rem !important;
             }
 
             .about-card .badge {
-                font-size: 0.8rem;
-                padding: 0.35rem 0.9rem;
+                font-size: 0.7rem;
+                padding: 0.3rem 0.8rem;
             }
 
             .about-card .feature-tag {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.8rem;
+            }
+
+            .motivation-card .content-wrapper {
+                padding: 2rem 1.5rem;
+            }
+
+            .motivation-card .big-icon {
+                font-size: 2.5rem;
+            }
+
+            .motivation-card h3 {
+                font-size: 1.6rem;
+            }
+
+            .motivation-card p {
+                font-size: 0.95rem;
+            }
+
+            .schedule-card .content-wrapper {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .schedule-card .day-item {
+                padding: 0.6rem 0;
+                flex-wrap: wrap;
+                gap: 0.2rem;
+            }
+
+            .schedule-card .day-name {
+                font-size: 0.9rem;
+                min-width: 55px;
+            }
+
+            .schedule-card .day-time {
                 font-size: 0.8rem;
-                padding: 0.4rem 0.9rem;
             }
 
-            .about-card .feature-tag i {
-                font-size: 0.85rem;
-            }
-
-            /* ===== FOOTER EN MÓVIL ===== */
             footer .grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 1.5rem;
@@ -873,9 +976,103 @@
             }
 
             footer .social-icon {
-                width: 44px;
-                height: 44px;
-                font-size: 1.2rem;
+                width: 42px;
+                height: 42px;
+                font-size: 1.1rem;
+            }
+
+            footer .text-sm {
+                font-size: 0.9rem !important;
+            }
+
+            footer h5 {
+                font-size: 1rem !important;
+            }
+
+            footer h4 {
+                font-size: 1.1rem !important;
+            }
+
+            footer p {
+                font-size: 0.9rem !important;
+            }
+
+            .hero-content .grid {
+                gap: 0.5rem;
+            }
+
+            .hero-content .grid>div {
+                padding: 0.7rem !important;
+            }
+
+            #contacto .p-8 {
+                padding: 1.5rem !important;
+            }
+        }
+
+        @media (min-width: 641px) {
+            .btn-primary {
+                width: auto;
+                min-width: 160px;
+            }
+
+            section {
+                padding-top: 5rem !important;
+                padding-bottom: 5rem !important;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-card .image-wrapper {
+                min-height: 380px;
+            }
+
+            .about-card .content-wrapper {
+                padding: 3rem 3rem;
+            }
+
+            .about-card .content-wrapper h3 {
+                font-size: 2.6rem !important;
+            }
+
+            .about-card .content-wrapper p {
+                font-size: 1.1rem !important;
+            }
+
+            .about-card .feature-tag {
+                font-size: 0.95rem;
+                padding: 0.45rem 1.1rem;
+            }
+
+            .motivation-card .content-wrapper {
+                padding: 4rem 3rem;
+            }
+
+            .motivation-card .big-icon {
+                font-size: 4.5rem;
+            }
+
+            .motivation-card h3 {
+                font-size: 3rem;
+            }
+
+            .motivation-card p {
+                font-size: 1.1rem;
+            }
+
+            .schedule-card .content-wrapper {
+                padding: 3rem 3rem;
+            }
+
+            .schedule-card .day-item {
+                padding: 0.9rem 0;
+            }
+
+            footer .grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
             }
 
             footer .text-sm {
@@ -890,77 +1087,10 @@
                 font-size: 1.2rem !important;
             }
 
-            footer p {
-                font-size: 0.95rem !important;
-            }
-
-            .hero-content .grid {
-                gap: 0.5rem;
-            }
-
-            .hero-content .grid>div {
-                padding: 0.75rem !important;
-            }
-        }
-
-        @media (min-width: 641px) {
-            .btn-primary {
-                width: auto;
-                min-width: 180px;
-            }
-
-            section {
-                padding-top: 5rem !important;
-                padding-bottom: 5rem !important;
-            }
-
-            .categories-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .about-card .image-wrapper {
-                min-height: 400px;
-            }
-
-            .about-card .content-wrapper {
-                padding: 3rem 3.5rem;
-            }
-
-            .about-card .content-wrapper h3 {
-                font-size: 2.8rem !important;
-            }
-
-            .about-card .content-wrapper p {
-                font-size: 1.15rem !important;
-            }
-
-            .about-card .feature-tag {
-                font-size: 1rem;
-                padding: 0.5rem 1.2rem;
-            }
-
-            /* ===== FOOTER EN DESKTOP ===== */
-            footer .grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 2rem;
-            }
-
-            footer .text-sm {
-                font-size: 1rem !important;
-            }
-
-            footer h5 {
-                font-size: 1.15rem !important;
-            }
-
-            footer h4 {
-                font-size: 1.3rem !important;
-            }
-
             footer .social-icon {
-                width: 48px;
-                height: 48px;
-                font-size: 1.3rem;
+                width: 46px;
+                height: 46px;
+                font-size: 1.2rem;
             }
         }
 
@@ -970,7 +1100,7 @@
             }
 
             .about-card .image-wrapper {
-                min-height: 450px;
+                min-height: 420px;
             }
 
             .about-card .content-wrapper {
@@ -978,11 +1108,23 @@
             }
 
             .about-card .content-wrapper h3 {
-                font-size: 3.2rem !important;
+                font-size: 3rem !important;
             }
 
             .about-card .content-wrapper p {
-                font-size: 1.2rem !important;
+                font-size: 1.15rem !important;
+            }
+
+            .schedule-card .content-wrapper {
+                padding: 4rem;
+            }
+
+            .motivation-card .content-wrapper {
+                padding: 5rem 4rem;
+            }
+
+            .motivation-card h3 {
+                font-size: 3.5rem;
             }
         }
 
@@ -1003,9 +1145,9 @@
 <body class="antialiased">
 
     <!-- ===== NAV ===== -->
-    <nav class="fixed top-0 left-0 w-full z-40 bg-white/95 backdrop-blur-md border-b border-gray-100" id="navbar">
+    <nav class="fixed top-0 left-0 w-full z-40 bg-white/90 backdrop-blur-lg border-b border-gray-100/60" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+            <div class="flex justify-between items-center h-18 sm:h-20">
                 <button type="button" class="flex items-center gap-3 text-left" id="brand-logo-btn">
                     <img src="imagenes/Logo PowerGym.jpg" alt="Logo PowerGym" class="brand-logo" decoding="async">
                     <div class="leading-none">
@@ -1015,14 +1157,15 @@
                     </div>
                 </button>
 
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden md:flex items-center space-x-7">
                     <a href="#inicio" class="nav-link">Inicio</a>
                     <a href="#sobre" class="nav-link">Sobre</a>
                     <a href="#productos" class="nav-link">Productos</a>
-                    <a href="#instalaciones" class="nav-link">Instalaciones</a>
+                    <a href="#horario" class="nav-link">Horario</a>
+                    <a href="#motivacion" class="nav-link">Motivación</a>
                     <a href="#contacto" class="nav-link">Contacto</a>
-                    <a href="https://wa.me/50586289512" target="_blank" rel="noopener" class="btn-primary px-6 text-sm">
-                        <i class="fa-solid fa-dumbbell"></i> Únete Ahora
+                    <a href="https://wa.me/50586289512" target="_blank" rel="noopener" class="btn-primary px-5 text-sm">
+                        <i class="fa-solid fa-dumbbell"></i> Únete
                     </a>
                 </div>
 
@@ -1035,23 +1178,26 @@
 
             <div id="mobile-menu"
                 class="md:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out border-gray-100">
-                <div class="grid gap-1 pb-5 pt-2 px-1">
+                <div class="grid gap-1 pb-4 pt-2 px-2">
                     <a href="#inicio"
-                        class="mobile-nav-link nav-link py-3 px-4 rounded-xl hover:bg-red-50/60 flex items-center justify-between">Inicio
+                        class="mobile-nav-link nav-link py-3.5 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-base">Inicio
                         <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
                     <a href="#sobre"
-                        class="mobile-nav-link nav-link py-3 px-4 rounded-xl hover:bg-red-50/60 flex items-center justify-between">Sobre
+                        class="mobile-nav-link nav-link py-3.5 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-base">Sobre
                         <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
                     <a href="#productos"
-                        class="mobile-nav-link nav-link py-3 px-4 rounded-xl hover:bg-red-50/60 flex items-center justify-between">Productos
+                        class="mobile-nav-link nav-link py-3.5 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-base">Productos
                         <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
-                    <a href="#instalaciones"
-                        class="mobile-nav-link nav-link py-3 px-4 rounded-xl hover:bg-red-50/60 flex items-center justify-between">Instalaciones
+                    <a href="#horario"
+                        class="mobile-nav-link nav-link py-3.5 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-base">Horario
+                        <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
+                    <a href="#motivacion"
+                        class="mobile-nav-link nav-link py-3.5 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-base">Motivación
                         <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
                     <a href="#contacto"
-                        class="mobile-nav-link nav-link py-3 px-4 rounded-xl hover:bg-red-50/60 flex items-center justify-between">Contacto
+                        class="mobile-nav-link nav-link py-3.5 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-base">Contacto
                         <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
-                    <div class="pt-3 px-4">
+                    <div class="pt-3 px-2">
                         <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
                             class="btn-primary px-6 w-full shadow-md">
                             <i class="fa-solid fa-dumbbell"></i> Únete Ahora
@@ -1068,7 +1214,7 @@
     </a>
 
     <!-- ===== MAIN ===== -->
-    <main class="pt-20 w-full max-w-full overflow-hidden">
+    <main class="pt-18 sm:pt-20 w-full max-w-full overflow-hidden">
 
         <!-- ===== HERO ===== -->
         <section id="inicio"
@@ -1094,6 +1240,12 @@
             </div>
             <div class="hero-content max-w-4xl mx-auto px-4 w-full overflow-hidden flex flex-col items-center">
 
+                <p class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-sm font-bold mb-4"
+                    data-aos="fade-up">
+                    <i class="fa-solid fa-fire text-primary"></i>
+                    El gimnasio #1 de Juigalpa
+                </p>
+
                 <h1 class="text-3xl sm:text-6xl font-black leading-tight mb-4 sm:mb-6 tracking-tight max-w-full px-2"
                     data-aos="fade-up">
                     Transforma tu cuerpo.<br>Construye tu <span class="text-primary">mejor versión</span>
@@ -1102,58 +1254,57 @@
                 <p class="text-base sm:text-xl text-gray-200 max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed px-2"
                     data-aos="fade-up" data-aos-delay="100">
                     Entrena con equipamiento profesional, acceso 24/7 y una comunidad enfocada en resultados reales.
-                    Suplementos de alta calidad para potenciar tu rendimiento.
                 </p>
 
                 <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full max-w-md px-4 sm:px-0"
                     data-aos="fade-up" data-aos-delay="180">
                     <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
-                        class="btn-primary px-8 py-3 sm:py-4 text-base w-full sm:w-auto">
+                        class="btn-primary px-8 py-3.5 text-base w-full sm:w-auto">
                         <i class="fa-brands fa-whatsapp"></i> Contáctanos
                     </a>
                     <a href="#productos"
-                        class="inline-flex items-center justify-center border-2 border-white text-white rounded-full px-8 py-3 sm:py-4 font-bold transition hover:bg-white hover:text-ink w-full sm:w-auto">
+                        class="btn-outline px-8 py-3.5 text-base w-full sm:w-auto">
                         Ver Productos
                     </a>
                 </div>
 
-                <!-- ===== TARJETAS DE ESTADÍSTICAS ===== -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-3xl mx-auto mt-6 sm:mt-12"
+                <!-- ===== STATS ===== -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-3xl mx-auto mt-8 sm:mt-14"
                     data-aos="fade-up" data-aos-delay="250">
 
                     <div
                         class="hero-stat bg-white/10 backdrop-blur-md rounded-xl border border-white/10 p-3 sm:p-4 flex items-center justify-center gap-3 sm:gap-4 transition hover:bg-white/20">
                         <i class="fa-solid fa-users text-primary text-lg sm:text-xl"></i>
-                        <div class="text-left">
+                        <div>
                             <p class="text-lg sm:text-2xl font-black leading-tight">2.7K+</p>
-                            <p class="text-[11px] sm:text-xs text-gray-300 leading-tight">Seguidores</p>
+                            <p class="text-[11px] sm:text-xs text-gray-300">Seguidores</p>
                         </div>
                     </div>
 
                     <div
                         class="hero-stat bg-white/10 backdrop-blur-md rounded-xl border border-white/10 p-3 sm:p-4 flex items-center justify-center gap-3 sm:gap-4 transition hover:bg-white/20">
                         <i class="fa-solid fa-clock text-primary text-lg sm:text-xl"></i>
-                        <div class="text-left">
+                        <div>
                             <p class="text-lg sm:text-2xl font-black leading-tight">24/7</p>
-                            <p class="text-[11px] sm:text-xs text-gray-300 leading-tight">Abierto</p>
+                            <p class="text-[11px] sm:text-xs text-gray-300">Abierto</p>
                         </div>
                     </div>
 
                     <div
                         class="hero-stat bg-white/10 backdrop-blur-md rounded-xl border border-white/10 p-3 sm:p-4 flex items-center justify-center gap-3 sm:gap-4 transition hover:bg-white/20">
                         <i class="fa-solid fa-medal text-primary text-lg sm:text-xl"></i>
-                        <div class="text-left">
+                        <div>
                             <p class="text-lg sm:text-2xl font-black leading-tight">Elite</p>
-                            <p class="text-[11px] sm:text-xs text-gray-300 leading-tight">Gym</p>
+                            <p class="text-[11px] sm:text-xs text-gray-300">Gym</p>
                         </div>
                     </div>
 
                     <div
                         class="hero-stat bg-white/10 backdrop-blur-md rounded-xl border border-white/10 p-3 sm:p-4 flex items-center justify-center gap-3 sm:gap-4 transition hover:bg-white/20">
                         <i class="fa-solid fa-star text-primary text-lg sm:text-xl"></i>
-                        <div class="text-left">
+                        <div>
                             <p class="text-lg sm:text-2xl font-black leading-tight">4.9</p>
-                            <p class="text-[11px] sm:text-xs text-gray-300 leading-tight">Calificación</p>
+                            <p class="text-[11px] sm:text-xs text-gray-300">Calificación</p>
                         </div>
                     </div>
 
@@ -1161,14 +1312,13 @@
             </div>
         </section>
 
-        <!-- ===== SOBRE NOSOTROS - TIPOGRAFÍA GRANDE ===== -->
-        <section id="sobre" class="py-10 sm:py-20 bg-white w-full max-w-full overflow-hidden">
+        <!-- ===== SOBRE NOSOTROS ===== -->
+        <section id="sobre" class="py-12 sm:py-20 bg-white w-full max-w-full overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="about-card">
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="image-wrapper">
-                            <img src="imagenes/PowerGym.png" alt="PowerGym Juigalpa - El mejor gimnasio de la ciudad"
-                                loading="lazy" decoding="async">
+                            <img src="imagenes/PowerGym.png" alt="PowerGym Juigalpa" loading="lazy" decoding="async">
                             <div class="gradient-overlay"></div>
                         </div>
                         <div class="content-wrapper flex flex-col justify-center text-white">
@@ -1176,30 +1326,22 @@
                                 <i class="fa-solid fa-star"></i>
                                 Número 1 en Juigalpa
                             </span>
-                            <h3 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 leading-tight">
+                            <h3 class="text-2xl sm:text-4xl lg:text-5xl font-black mb-4 leading-tight">
                                 El gimnasio <span class="text-primary">#1</span> de Juigalpa
                             </h3>
-                            <p class="text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed mb-5">
+                            <p class="text-gray-300 text-sm sm:text-lg leading-relaxed mb-5">
                                 PowerGym es más que un gimnasio. Somos una comunidad de campeones que entrena con
                                 disciplina, pasión y constancia. Equipamiento de primera, entrenadores certificados y un
                                 ambiente que te impulsa a dar lo mejor de ti.
                             </p>
-                            <div class="flex flex-wrap gap-3 mb-5">
-                                <span class="feature-tag">
-                                    <i class="fa-solid fa-trophy"></i> Campeones
-                                </span>
-                                <span class="feature-tag">
-                                    <i class="fa-solid fa-star"></i> 5 Estrellas
-                                </span>
-                                <span class="feature-tag">
-                                    <i class="fa-solid fa-medal"></i> Elite Gym
-                                </span>
-                                <span class="feature-tag">
-                                    <i class="fa-solid fa-clock"></i> 24/7
-                                </span>
+                            <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="feature-tag"><i class="fa-solid fa-trophy"></i> Campeones</span>
+                                <span class="feature-tag"><i class="fa-solid fa-star"></i> 5 Estrellas</span>
+                                <span class="feature-tag"><i class="fa-solid fa-medal"></i> Elite Gym</span>
+                                <span class="feature-tag"><i class="fa-solid fa-clock"></i> 24/7</span>
                             </div>
                             <a href="https://wa.me/50586289512" target="_blank"
-                                class="btn-primary px-8 py-4 w-full sm:w-auto text-base sm:text-lg">
+                                class="btn-primary px-8 py-3.5 w-full sm:w-auto text-base">
                                 <i class="fa-brands fa-whatsapp"></i> Únete hoy
                             </a>
                         </div>
@@ -1208,17 +1350,15 @@
             </div>
         </section>
 
-        <!-- ===== PRODUCTOS - SIN CATEGORÍA "TODOS" ===== -->
-        <section id="productos" class="py-10 sm:py-20 bg-soft w-full max-w-full overflow-hidden">
+        <!-- ===== PRODUCTOS ===== -->
+        <section id="productos" class="py-12 sm:py-20 bg-soft w-full max-w-full overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                <div id="main-view" style="display: block !important;">
+                <div id="main-view">
                     <div class="text-center mb-8 sm:mb-10" data-aos="fade-up">
-                        <p class="text-primary font-black uppercase tracking-wide mb-2 text-sm sm:text-base">Suplementos
-                            Deportivos</p>
+                        <p class="text-primary font-black uppercase tracking-wide mb-2 text-sm">Suplementos Deportivos</p>
                         <h2 class="text-2xl sm:text-5xl font-black text-ink">Nuestros Productos</h2>
-                        <p class="text-muted text-sm sm:text-base mt-2 sm:mt-3">Selecciona una categoría para ver los
-                            productos disponibles.</p>
+                        <p class="text-muted text-sm mt-2">Selecciona una categoría para ver los productos disponibles.</p>
                     </div>
                     <div class="categories-grid" id="categories-grid"></div>
                 </div>
@@ -1233,52 +1373,112 @@
             </div>
         </section>
 
-        <!-- ===== INSTALACIONES ===== -->
-        <section id="instalaciones" class="py-10 sm:py-20 bg-white w-full max-w-full overflow-hidden">
+        <!-- ===== HORARIOS ===== -->
+        <section id="horario" class="py-12 sm:py-20 bg-white w-full max-w-full overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-8 sm:mb-12" data-aos="fade-up">
-                    <p class="text-primary font-black uppercase tracking-wide mb-2 text-sm sm:text-base">Instalaciones
-                        Elite</p>
-                    <h2 class="text-2xl sm:text-5xl font-black text-ink">Conoce PowerGym</h2>
-                    <p class="text-muted text-sm sm:text-base mt-2 sm:mt-3">Equipamiento profesional para llevar tu
-                        entrenamiento al siguiente nivel.</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-4 sm:gap-6" data-aos="fade-up">
-                    <div class="group relative rounded-2xl overflow-hidden shadow-lg">
-                        <img src="imagenes/Banner PowerGym.jpg" alt="Instalaciones PowerGym"
-                            class="w-full h-72 object-cover group-hover:scale-105 transition duration-500"
-                            loading="lazy" decoding="async">
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                            <p class="text-white font-bold">Área de Pesas</p>
+                <div class="schedule-card">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div
+                            class="image-wrapper flex items-center justify-center p-8 sm:p-12 bg-gradient-to-br from-primary/20 to-primary/5">
+                            <div class="text-center">
+                                <div
+                                    class="w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-regular fa-clock text-4xl sm:text-5xl text-primary"></i>
+                                </div>
+                                <h3 class="text-xl sm:text-3xl font-black text-white">Horario de Atención</h3>
+                                <p class="text-gray-300 mt-2 text-sm">Entrena a tu ritmo, siempre estamos para ti</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="group relative rounded-2xl overflow-hidden shadow-lg">
-                        <img src="imagenes/Mejor version.jpg" alt="Entrenamiento PowerGym"
-                            class="w-full h-72 object-cover group-hover:scale-105 transition duration-500"
-                            loading="lazy" decoding="async">
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                            <p class="text-white font-bold">Zona Cardio</p>
-                        </div>
-                    </div>
-                    <div class="group relative rounded-2xl overflow-hidden shadow-lg">
-                        <img src="imagenes/Ventas de suplementos.jpg" alt="Suplementos PowerGym"
-                            class="w-full h-72 object-cover group-hover:scale-105 transition duration-500"
-                            loading="lazy" decoding="async">
-                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                            <p class="text-white font-bold">Tienda de Suplementos</p>
+
+                        <div class="content-wrapper flex flex-col justify-center text-white p-6 sm:p-8 md:p-10">
+                            <div class="space-y-0">
+                                <div class="day-item">
+                                    <span class="day-name">Lunes</span>
+                                    <span class="day-time">5:00 AM - 9:00 PM</span>
+                                </div>
+                                <div class="day-item">
+                                    <span class="day-name">Martes</span>
+                                    <span class="day-time">5:00 AM - 9:00 PM</span>
+                                </div>
+                                <div class="day-item">
+                                    <span class="day-name">Miércoles</span>
+                                    <span class="day-time">5:00 AM - 9:00 PM</span>
+                                </div>
+                                <div class="day-item">
+                                    <span class="day-name">Jueves</span>
+                                    <span class="day-time">5:00 AM - 9:00 PM</span>
+                                </div>
+                                <div class="day-item">
+                                    <span class="day-name">Viernes</span>
+                                    <span class="day-time">5:00 AM - 9:00 PM</span>
+                                </div>
+                                <div class="day-item">
+                                    <span class="day-name">Sábado</span>
+                                    <span class="day-time">5:00 AM - 12:00 PM</span>
+                                </div>
+                                <div class="day-item">
+                                    <span class="day-name">Domingo</span>
+                                    <span class="day-time">8:00 AM - 12:00 PM</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-5 pt-4 border-t border-white/10">
+                                <p class="text-gray-400 text-sm flex items-center gap-2">
+                                    <i class="fa-solid fa-info-circle text-primary"></i>
+                                    Horarios sujetos a cambios en días festivos
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ===== MOTIVACIÓN ===== -->
+        <section id="motivacion" class="py-12 sm:py-20 bg-soft w-full max-w-full overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="motivation-card">
+                    <div class="content-wrapper">
+                        <div class="big-icon">
+                            <i class="fa-solid fa-fire-flame-curved"></i>
+                        </div>
+                        <h3>
+                            Entrena y alcanza tu <span>mejor versión</span>
+                        </h3>
+                        <p>
+                            En PowerGym no solo transformas tu cuerpo, construyes disciplina, carácter y una mentalidad
+                            de campeón. Cada gota de sudor te acerca a la mejor versión de ti mismo.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-2 mb-6">
+                            <span class="feature-tag" style="background: rgba(220,38,38,0.15); border-color: rgba(220,38,38,0.2); color: #dc2626;">
+                                <i class="fa-solid fa-dumbbell"></i> Disciplina
+                            </span>
+                            <span class="feature-tag" style="background: rgba(220,38,38,0.15); border-color: rgba(220,38,38,0.2); color: #dc2626;">
+                                <i class="fa-solid fa-heart"></i> Pasión
+                            </span>
+                            <span class="feature-tag" style="background: rgba(220,38,38,0.15); border-color: rgba(220,38,38,0.2); color: #dc2626;">
+                                <i class="fa-solid fa-trophy"></i> Constancia
+                            </span>
+                            <span class="feature-tag" style="background: rgba(220,38,38,0.15); border-color: rgba(220,38,38,0.2); color: #dc2626;">
+                                <i class="fa-solid fa-star"></i> Resultados
+                            </span>
+                        </div>
+                        <a href="https://wa.me/50586289512" target="_blank"
+                            class="btn-primary px-10 py-3.5 w-full sm:w-auto text-base">
+                            <i class="fa-brands fa-whatsapp"></i> Comienza tu transformación
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ===== CONTACTO ===== -->
-        <section id="contacto" class="py-10 sm:py-20 bg-ink text-white w-full max-w-full overflow-hidden">
+        <section id="contacto" class="py-12 sm:py-20 bg-ink text-white w-full max-w-full overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 sm:gap-12 items-center">
                     <div data-aos="fade-right">
-                        <p class="text-primary font-black uppercase tracking-wide mb-2">Contacto</p>
-                        <h2 class="text-2xl sm:text-5xl font-black mb-4 sm:mb-6">¿Listo para cambiar?</h2>
+                        <p class="text-primary font-black uppercase tracking-wide mb-2 text-sm">Contacto</p>
+                        <h2 class="text-2xl sm:text-5xl font-black mb-4">¿Listo para cambiar?</h2>
                         <p class="text-gray-300 text-base sm:text-lg mb-6 sm:mb-8">
                             Escríbenos y empieza tu entrenamiento en PowerGym Juigalpa. Te ayudamos a elegir la mejor
                             opción para tu meta.
@@ -1290,8 +1490,8 @@
                                     <i class="fa-solid fa-location-dot"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-white">Dirección</h4>
-                                    <p class="text-gray-300">Disnorte 1/2 cuadra al este, Juigalpa, Nicaragua</p>
+                                    <h4 class="font-bold text-white text-sm sm:text-lg">Dirección</h4>
+                                    <p class="text-gray-300 text-xs sm:text-base">Disnorte 1/2 cuadra al este, Juigalpa, Nicaragua</p>
                                 </div>
                             </div>
                             <div class="flex gap-3 sm:gap-4">
@@ -1300,8 +1500,8 @@
                                     <i class="fa-solid fa-phone"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-white">Teléfono</h4>
-                                    <p class="text-gray-300">+505 8628 9512</p>
+                                    <h4 class="font-bold text-white text-sm sm:text-lg">Teléfono</h4>
+                                    <p class="text-gray-300 text-xs sm:text-base">+505 8628 9512</p>
                                 </div>
                             </div>
                             <div class="flex gap-3 sm:gap-4">
@@ -1310,8 +1510,8 @@
                                     <i class="fa-solid fa-clock"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-white">Horario</h4>
-                                    <p class="text-gray-300">Abierto 24/7</p>
+                                    <h4 class="font-bold text-white text-sm sm:text-lg">Horario</h4>
+                                    <p class="text-gray-300 text-xs sm:text-base">24/7 abierto</p>
                                 </div>
                             </div>
                             <div class="flex gap-3 sm:gap-4">
@@ -1320,8 +1520,8 @@
                                     <i class="fa-solid fa-hashtag"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-white">Redes Sociales</h4>
-                                    <p class="text-gray-300">Síguenos en nuestras redes:</p>
+                                    <h4 class="font-bold text-white text-sm sm:text-lg">Redes Sociales</h4>
+                                    <p class="text-gray-300 text-xs sm:text-base">Síguenos en nuestras redes:</p>
                                     <div class="flex gap-2 sm:gap-3 mt-1 sm:mt-2">
                                         <a href="https://www.facebook.com/profile.php?id=100064038700639&locale=es_LA"
                                             target="_blank" rel="noopener"
@@ -1341,7 +1541,7 @@
 
                     <div class="bg-white text-ink p-6 sm:p-8 rounded-2xl shadow-glow" data-aos="fade-left">
                         <h3 class="text-xl sm:text-2xl font-black mb-1">Contacto Directo vía WhatsApp</h3>
-                        <p class="text-muted mb-4 sm:mb-6">Cuéntanos tu objetivo y te ayudaremos a lograrlo.</p>
+                        <p class="text-muted text-sm mb-4 sm:mb-6">Cuéntanos tu consulta y te ayudaremos a resolverla.</p>
                         <form id="contact-form" class="space-y-4 sm:space-y-5">
                             <div>
                                 <label class="block text-sm font-bold text-slate-700 mb-1" for="name">Tu Nombre</label>
@@ -1349,16 +1549,14 @@
                                     class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary text-sm sm:text-base">
                             </div>
                             <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-1" for="phone">Número de
-                                    WhatsApp</label>
+                                <label class="block text-sm font-bold text-slate-700 mb-1" for="phone">Número de WhatsApp</label>
                                 <input id="phone" type="tel" placeholder="Ej. 8628 9512" required
                                     class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary text-sm sm:text-base">
                             </div>
                             <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-1" for="message">¿Qué objetivo
-                                    tienes?</label>
+                                <label class="block text-sm font-bold text-slate-700 mb-1" for="message">¿Qué consulta tienes?</label>
                                 <textarea id="message" rows="3"
-                                    placeholder="Ej. Quiero perder peso, ganar masa muscular o comprar suplementos..."
+                                    placeholder="Ej. Quiero saber precios, horarios, membresías, disponibilidad de productos..."
                                     required
                                     class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary text-sm sm:text-base"></textarea>
                             </div>
@@ -1374,7 +1572,7 @@
         <!-- ===== CTA FINAL ===== -->
         <section class="py-16 sm:py-24 bg-primary text-white w-full max-w-full overflow-hidden">
             <div class="max-w-4xl mx-auto px-4 text-center" data-aos="zoom-in">
-                <h2 class="text-3xl sm:text-5xl font-black mb-4 sm:mb-6">
+                <h2 class="text-3xl sm:text-5xl font-black mb-4">
                     Empieza hoy
                 </h2>
                 <p class="text-lg sm:text-xl mb-6 sm:mb-8 opacity-90">
@@ -1397,28 +1595,26 @@
 
                 <div class="flex flex-col items-center gap-2">
                     <img src="imagenes/Logo PowerGym.jpg" alt="Logo PowerGym"
-                        class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl opacity-95" loading="lazy"
+                        class="w-14 h-14 sm:w-18 sm:h-18 object-cover rounded-xl opacity-95" loading="lazy"
                         decoding="async">
-                    <div class="text-center">
-                        <h4 class="font-heading font-black text-xl sm:text-2xl">Power<span
-                                class="text-primary">Gym</span>
-                        </h4>
-                        <p class="text-gray-400 text-sm sm:text-base">El gimnasio #1 de Juigalpa</p>
+                    <div>
+                        <h4 class="font-heading font-black text-lg sm:text-xl">Power<span class="text-primary">Gym</span></h4>
+                        <p class="text-gray-400 text-sm">El gimnasio #1 de Juigalpa</p>
                     </div>
                 </div>
 
                 <div class="text-center">
                     <h5 class="font-bold text-white text-base sm:text-lg mb-3">Ubicación</h5>
-                    <p class="text-gray-400 text-sm sm:text-base">Disnorte 1/2 cuadra al este</p>
-                    <p class="text-gray-400 text-sm sm:text-base">Juigalpa, Nicaragua</p>
+                    <p class="text-gray-400 text-sm">Disnorte 1/2 cuadra al este</p>
+                    <p class="text-gray-400 text-sm">Juigalpa, Nicaragua</p>
                 </div>
 
                 <div class="text-center">
                     <h5 class="font-bold text-white text-base sm:text-lg mb-3">Contacto</h5>
-                    <p class="text-gray-400 text-sm sm:text-base">
+                    <p class="text-gray-400 text-sm">
                         <i class="fa-solid fa-phone text-primary mr-2"></i>+505 8628 9512
                     </p>
-                    <p class="text-gray-400 text-sm sm:text-base">
+                    <p class="text-gray-400 text-sm">
                         <i class="fa-solid fa-clock text-primary mr-2"></i>24/7 abierto
                     </p>
                 </div>
@@ -1427,29 +1623,30 @@
                     <h5 class="font-bold text-white text-base sm:text-lg mb-3">Síguenos</h5>
                     <div class="flex justify-center gap-3">
                         <a href="https://www.facebook.com/profile.php?id=100064038700639&locale=es_LA" target="_blank"
-                            rel="noopener" class="social-icon facebook w-12 h-12 sm:w-14 sm:h-14">
-                            <i class="fa-brands fa-facebook-f text-lg sm:text-xl"></i>
+                            rel="noopener" class="social-icon facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
                         </a>
                         <a href="https://www.tiktok.com/@powergym2001?_r=1&_t=ZS-97YHyHy84Xc" target="_blank"
-                            rel="noopener" class="social-icon tiktok w-12 h-12 sm:w-14 sm:h-14">
-                            <i class="fa-brands fa-tiktok text-lg sm:text-xl"></i>
+                            rel="noopener" class="social-icon tiktok">
+                            <i class="fa-brands fa-tiktok"></i>
                         </a>
                         <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
-                            class="social-icon whatsapp w-12 h-12 sm:w-14 sm:h-14">
-                            <i class="fa-brands fa-whatsapp text-lg sm:text-xl"></i>
+                            class="social-icon whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i>
                         </a>
                     </div>
                     <div class="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1">
-                        <a href="#inicio" class="text-gray-400 hover:text-primary transition text-sm sm:text-base">Inicio</a>
-                        <a href="#sobre" class="text-gray-400 hover:text-primary transition text-sm sm:text-base">Sobre</a>
-                        <a href="#productos" class="text-gray-400 hover:text-primary transition text-sm sm:text-base">Productos</a>
-                        <a href="#instalaciones" class="text-gray-400 hover:text-primary transition text-sm sm:text-base">Instalaciones</a>
-                        <a href="#contacto" class="text-gray-400 hover:text-primary transition text-sm sm:text-base">Contacto</a>
+                        <a href="#inicio" class="text-gray-400 hover:text-primary transition text-sm">Inicio</a>
+                        <a href="#sobre" class="text-gray-400 hover:text-primary transition text-sm">Sobre</a>
+                        <a href="#productos" class="text-gray-400 hover:text-primary transition text-sm">Productos</a>
+                        <a href="#horario" class="text-gray-400 hover:text-primary transition text-sm">Horario</a>
+                        <a href="#motivacion" class="text-gray-400 hover:text-primary transition text-sm">Motivación</a>
+                        <a href="#contacto" class="text-gray-400 hover:text-primary transition text-sm">Contacto</a>
                     </div>
                 </div>
 
             </div>
-            <div class="border-t border-white/5 pt-5 sm:pt-7 text-center text-gray-500 text-sm sm:text-base">
+            <div class="border-t border-white/5 pt-5 sm:pt-7 text-center text-gray-500 text-sm">
                 <p>&copy; 2026 PowerGym Juigalpa, Nicaragua. Todos los derechos reservados.</p>
             </div>
         </div>
@@ -1461,13 +1658,13 @@
     <script>
         // ===== AOS CONFIG =====
         AOS.init({
-            duration: 800,
+            duration: 700,
             once: true,
             offset: 40,
             easing: 'ease-out-cubic'
         });
 
-        // ===== DATOS DEL MENÚ - SIN "TODOS" =====
+        // ===== DATOS DEL MENÚ =====
         const menuData = [{
             id: 'proteina',
             category: "Proteína",
@@ -1522,16 +1719,13 @@
         let currentCategoryId = null;
         let isSubViewOpen = false;
 
-        // ===== RENDERIZAR CATEGORÍAS - SIN "TODOS" =====
+        // ===== RENDERIZAR CATEGORÍAS =====
         function renderCategories() {
             categoriesGrid.innerHTML = '';
 
-            // La primera categoría se marca como activa por defecto
-            let firstCategory = true;
-
             menuData.forEach(cat => {
                 const card = document.createElement('div');
-                card.className = `category-card ${firstCategory ? 'active border-2 border-primary shadow-lg shadow-primary/20' : ''}`;
+                card.className = `category-card`;
                 card.innerHTML = `
                             <img src="${cat.img}" alt="${cat.category}" loading="lazy">
                             <div class="overlay">
@@ -1543,15 +1737,6 @@
                 card.dataset.category = cat.id;
                 card.addEventListener('click', () => openSubview(cat.id));
                 categoriesGrid.appendChild(card);
-
-                // Si es la primera categoría, la abrimos automáticamente
-                if (firstCategory) {
-                    firstCategory = false;
-                    // Abrir la primera categoría después de un breve delay
-                    setTimeout(() => {
-                        openSubview(cat.id);
-                    }, 300);
-                }
             });
         }
 
@@ -1827,7 +2012,7 @@
         // ===== CONTACT FORM =====
         const contactForm = document.getElementById('contact-form');
 
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
             const name = document.getElementById('name').value.trim();
@@ -1840,7 +2025,7 @@
             }
 
             const baseText =
-                `Hola PowerGym, soy ${name} (Tel: ${phone}). Mi objetivo es: ${message}`;
+                `Hola PowerGym, soy ${name} (Tel: ${phone}). Mi consulta es: ${message}`;
             const whatsappUrl = `https://wa.me/50586289512?text=${encodeURIComponent(baseText)}`;
             window.open(whatsappUrl, '_blank');
             contactForm.reset();
@@ -1864,18 +2049,6 @@
 
         // ===== INICIALIZAR =====
         renderCategories();
-
-        // ===== VERIFICAR PARÁMETROS DE URL =====
-        const urlParams = new URLSearchParams(window.location.search);
-        const categoriaParam = urlParams.get('categoria');
-        if (categoriaParam) {
-            const categoryExists = menuData.some(cat => cat.id === categoriaParam);
-            if (categoryExists) {
-                setTimeout(() => {
-                    openSubview(categoriaParam);
-                }, 300);
-            }
-        }
     </script>
 </body>
 
