@@ -91,15 +91,16 @@
         .nav-link {
             color: #374151;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             transition: color 180ms ease;
             position: relative;
+            padding: 0.5rem 0;
         }
 
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -2px;
             left: 0;
             width: 0;
             height: 2px;
@@ -117,7 +118,7 @@
 
         /* ===== BOTONES ===== */
         .btn-primary {
-            min-height: 48px;
+            min-height: 52px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -131,7 +132,7 @@
             transition: all 180ms ease;
             position: relative;
             overflow: hidden;
-            padding: 0.75rem 1.5rem;
+            padding: 0.85rem 1.8rem;
             border: none;
             cursor: pointer;
             width: 100%;
@@ -165,7 +166,7 @@
             border-radius: 999px;
             font-weight: 700;
             font-size: 1rem;
-            padding: 0.75rem 1.5rem;
+            padding: 0.85rem 1.8rem;
             border: 2px solid rgba(255, 255, 255, 0.4);
             color: #fff;
             background: transparent;
@@ -205,11 +206,19 @@
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: center 30%;
             opacity: 0;
             transform: scale(1.03);
             transition: opacity 900ms ease, transform 4200ms ease;
+        }
+
+        .hero-slide.horizontal {
+            object-fit: cover;
+            object-position: center 25%;
+        }
+
+        .hero-slide.vertical {
+            object-fit: cover;
+            object-position: center 35%;
         }
 
         .hero-slide.active {
@@ -290,10 +299,10 @@
             }
         }
 
-        /* ===== BRAND ===== */
+        /* ===== BRAND - POWER EN ROJO, GYM EN NEGRO ===== */
         .brand-logo {
-            width: 50px;
-            height: 50px;
+            width: 54px;
+            height: 54px;
             object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(220, 38, 38, 0.25);
@@ -309,17 +318,17 @@
         .brand-name {
             font-family: 'Poppins', sans-serif;
             font-weight: 900;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             line-height: 1.1;
-            color: #111827;
             letter-spacing: -0.02em;
         }
 
-        .brand-name .highlight {
-            background: linear-gradient(135deg, #dc2626, #991b1b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .brand-name .power {
+            color: #dc2626;
+        }
+
+        .brand-name .gym {
+            color: #111827;
         }
 
         /* ===== SOCIAL ICONS ===== */
@@ -471,10 +480,10 @@
             backdrop-filter: blur(4px);
         }
 
-        /* ===== PRODUCT CAROUSEL - MÁS VERTICAL ===== */
+        /* ===== PRODUCT CAROUSEL ===== */
         .product-carousel {
             position: relative;
-            height: 34rem;
+            height: 42rem;
             overflow: hidden;
             background: #f3f4f6;
             contain: layout paint;
@@ -724,12 +733,16 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        .motivation-card .image-wrapper {
             position: relative;
+            overflow: hidden;
+            min-height: 280px;
         }
 
         .motivation-card .content-wrapper {
-            padding: 3rem 2rem;
-            text-align: center;
+            padding: 2rem 1.5rem;
         }
 
         .motivation-card .big-icon {
@@ -755,6 +768,73 @@
             max-width: 500px;
             margin: 1rem auto 2rem;
             line-height: 1.6;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .feature-item:hover {
+            background: rgba(220, 38, 38, 0.12);
+            border-color: rgba(220, 38, 38, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .feature-item i {
+            font-size: 1.5rem;
+            color: #dc2626;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ============================================================ */
+        /* ===== CONTACTO - TIPOGRAFÍA GRANDE ===== */
+        /* ============================================================ */
+        #contacto .contact-title {
+            font-size: 2rem;
+        }
+
+        #contacto .contact-subtitle {
+            font-size: 1.25rem;
+        }
+
+        #contacto .contact-text {
+            font-size: 1.1rem;
+        }
+
+        #contacto .contact-label {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        #contacto .contact-input {
+            font-size: 1.1rem;
+            padding: 0.9rem 1rem;
+        }
+
+        #contacto .contact-btn {
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+
+        #contacto .info-title {
+            font-size: 1.2rem;
+        }
+
+        #contacto .info-text {
+            font-size: 1.05rem;
         }
 
         /* ============================================================ */
@@ -789,8 +869,15 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                object-position: center 40%;
                 display: block;
+            }
+
+            .hero-mobile-image img.horizontal {
+                object-position: center 20%;
+            }
+
+            .hero-mobile-image img.vertical {
+                object-position: center 35%;
             }
 
             .hero-content {
@@ -799,34 +886,40 @@
             }
 
             .brand-logo {
-                width: 42px;
-                height: 42px;
+                width: 44px;
+                height: 44px;
             }
 
             .brand-name {
-                font-size: 1.2rem;
+                font-size: 1.25rem;
             }
 
             .btn-primary {
                 width: 100%;
-                min-height: 48px;
-                font-size: 0.95rem;
-                padding: 0.7rem 1rem;
+                min-height: 52px;
+                font-size: 1rem;
+                padding: 0.8rem 1rem;
             }
 
-            /* ===== NAV MÓVIL MÁS ANCHO ===== */
+            .btn-outline {
+                width: 100%;
+                min-height: 52px;
+                font-size: 1rem;
+                padding: 0.8rem 1rem;
+            }
+
             .nav-link {
-                font-size: 1rem !important;
-                padding: 0.75rem 1rem !important;
+                font-size: 1.1rem !important;
+                padding: 0.75rem 0 !important;
             }
 
             #mobile-menu .grid {
-                gap: 0.25rem !important;
+                gap: 0.3rem !important;
             }
 
             #mobile-menu .mobile-nav-link {
-                padding: 0.85rem 1.25rem !important;
-                font-size: 1.05rem !important;
+                padding: 1rem 1.25rem !important;
+                font-size: 1.1rem !important;
                 border-radius: 12px !important;
             }
 
@@ -839,7 +932,12 @@
                 padding-right: 0.5rem !important;
             }
 
-            /* ===== CATEGORÍAS MÁS GRANDES EN MÓVIL ===== */
+            #mobile-menu-btn {
+                width: 48px !important;
+                height: 48px !important;
+                font-size: 1.4rem !important;
+            }
+
             .categories-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 1rem !important;
@@ -885,9 +983,8 @@
                 padding: 0.3rem 0.6rem;
             }
 
-            /* ===== PRODUCT CAROUSEL MÁS VERTICAL EN MÓVIL ===== */
             .product-carousel {
-                height: 24rem;
+                height: 32rem !important;
             }
 
             section {
@@ -921,8 +1018,12 @@
                 padding: 0.3rem 0.8rem;
             }
 
+            .motivation-card .image-wrapper {
+                min-height: 180px;
+            }
+
             .motivation-card .content-wrapper {
-                padding: 2rem 1.5rem;
+                padding: 1.5rem 1.2rem;
             }
 
             .motivation-card .big-icon {
@@ -935,6 +1036,18 @@
 
             .motivation-card p {
                 font-size: 0.95rem;
+            }
+
+            .feature-item {
+                padding: 0.6rem 0.3rem;
+            }
+
+            .feature-item i {
+                font-size: 1.2rem;
+            }
+
+            .feature-item span {
+                font-size: 0.75rem;
             }
 
             .schedule-card .content-wrapper {
@@ -1005,6 +1118,40 @@
                 padding: 0.7rem !important;
             }
 
+            #contacto .contact-title {
+                font-size: 1.6rem !important;
+            }
+
+            #contacto .contact-subtitle {
+                font-size: 1rem !important;
+            }
+
+            #contacto .contact-text {
+                font-size: 0.95rem !important;
+            }
+
+            #contacto .contact-label {
+                font-size: 0.95rem !important;
+            }
+
+            #contacto .contact-input {
+                font-size: 1rem !important;
+                padding: 0.75rem !important;
+            }
+
+            #contacto .contact-btn {
+                font-size: 1rem !important;
+                padding: 0.85rem !important;
+            }
+
+            #contacto .info-title {
+                font-size: 1rem !important;
+            }
+
+            #contacto .info-text {
+                font-size: 0.95rem !important;
+            }
+
             #contacto .p-8 {
                 padding: 1.5rem !important;
             }
@@ -1012,6 +1159,11 @@
 
         @media (min-width: 641px) {
             .btn-primary {
+                width: auto;
+                min-width: 160px;
+            }
+
+            .btn-outline {
                 width: auto;
                 min-width: 160px;
             }
@@ -1046,8 +1198,12 @@
                 padding: 0.45rem 1.1rem;
             }
 
+            .motivation-card .image-wrapper {
+                min-height: 320px;
+            }
+
             .motivation-card .content-wrapper {
-                padding: 4rem 3rem;
+                padding: 3rem 3rem;
             }
 
             .motivation-card .big-icon {
@@ -1060,6 +1216,18 @@
 
             .motivation-card p {
                 font-size: 1.1rem;
+            }
+
+            .feature-item {
+                padding: 1rem 0.5rem;
+            }
+
+            .feature-item i {
+                font-size: 1.8rem;
+            }
+
+            .feature-item span {
+                font-size: 0.95rem;
             }
 
             .schedule-card .content-wrapper {
@@ -1092,6 +1260,39 @@
                 height: 46px;
                 font-size: 1.2rem;
             }
+
+            #contacto .contact-title {
+                font-size: 2.2rem !important;
+            }
+
+            #contacto .contact-subtitle {
+                font-size: 1.35rem !important;
+            }
+
+            #contacto .contact-text {
+                font-size: 1.15rem !important;
+            }
+
+            #contacto .contact-label {
+                font-size: 1.05rem !important;
+            }
+
+            #contacto .contact-input {
+                font-size: 1.15rem !important;
+                padding: 1rem !important;
+            }
+
+            #contacto .contact-btn {
+                font-size: 1.15rem !important;
+            }
+
+            #contacto .info-title {
+                font-size: 1.25rem !important;
+            }
+
+            #contacto .info-text {
+                font-size: 1.1rem !important;
+            }
         }
 
         @media (min-width: 1024px) {
@@ -1115,16 +1316,52 @@
                 font-size: 1.15rem !important;
             }
 
-            .schedule-card .content-wrapper {
-                padding: 4rem;
+            .motivation-card .image-wrapper {
+                min-height: 400px;
             }
 
             .motivation-card .content-wrapper {
-                padding: 5rem 4rem;
+                padding: 4rem;
+            }
+
+            .motivation-card .big-icon {
+                font-size: 5rem;
             }
 
             .motivation-card h3 {
                 font-size: 3.5rem;
+            }
+
+            .motivation-card p {
+                font-size: 1.2rem;
+            }
+
+            .feature-item i {
+                font-size: 2rem;
+            }
+
+            .schedule-card .content-wrapper {
+                padding: 4rem;
+            }
+
+            #contacto .contact-title {
+                font-size: 2.5rem !important;
+            }
+
+            #contacto .contact-subtitle {
+                font-size: 1.5rem !important;
+            }
+
+            #contacto .contact-text {
+                font-size: 1.2rem !important;
+            }
+
+            #contacto .info-title {
+                font-size: 1.4rem !important;
+            }
+
+            #contacto .info-text {
+                font-size: 1.15rem !important;
             }
         }
 
@@ -1147,32 +1384,32 @@
     <!-- ===== NAV ===== -->
     <nav class="fixed top-0 left-0 w-full z-40 bg-white/90 backdrop-blur-lg border-b border-gray-100/60" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-18 sm:h-20">
+            <div class="flex justify-between items-center h-20 sm:h-24">
                 <button type="button" class="flex items-center gap-3 text-left" id="brand-logo-btn">
                     <img src="imagenes/Logo PowerGym.jpg" alt="Logo PowerGym" class="brand-logo" decoding="async">
                     <div class="leading-none">
                         <span class="brand-name">
-                            Power<span class="highlight">Gym</span>
+                            <span class="power">Power</span><span class="gym">Gym</span>
                         </span>
                     </div>
                 </button>
 
-                <div class="hidden md:flex items-center space-x-7">
+                <div class="hidden md:flex items-center space-x-8">
                     <a href="#inicio" class="nav-link">Inicio</a>
                     <a href="#sobre" class="nav-link">Sobre</a>
                     <a href="#productos" class="nav-link">Productos</a>
                     <a href="#horario" class="nav-link">Horario</a>
                     <a href="#motivacion" class="nav-link">Motivación</a>
                     <a href="#contacto" class="nav-link">Contacto</a>
-                    <a href="https://wa.me/50586289512" target="_blank" rel="noopener" class="btn-primary px-5 text-sm">
+                    <a href="https://wa.me/50586289512" target="_blank" rel="noopener" class="btn-primary px-6 text-sm">
                         <i class="fa-solid fa-dumbbell"></i> Únete
                     </a>
                 </div>
 
                 <button id="mobile-menu-btn" type="button"
-                    class="md:hidden w-11 h-11 rounded-xl border border-gray-200 text-primary flex items-center justify-center transition-colors duration-200"
+                    class="md:hidden w-12 h-12 rounded-xl border border-gray-200 text-primary flex items-center justify-center transition-colors duration-200"
                     aria-label="Menú">
-                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                    <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
                 </button>
             </div>
 
@@ -1180,22 +1417,22 @@
                 class="md:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out border-gray-100">
                 <div class="grid gap-1 pb-4 pt-2 px-2">
                     <a href="#inicio"
-                        class="mobile-nav-link nav-link py-3.5 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-base">Inicio
+                        class="mobile-nav-link nav-link py-4 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-lg">Inicio
                         <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
                     <a href="#sobre"
-                        class="mobile-nav-link nav-link py-3.5 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-base">Sobre
+                        class="mobile-nav-link nav-link py-4 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-lg">Sobre
                         <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
                     <a href="#productos"
-                        class="mobile-nav-link nav-link py-3.5 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-base">Productos
+                        class="mobile-nav-link nav-link py-4 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-lg">Productos
                         <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
                     <a href="#horario"
-                        class="mobile-nav-link nav-link py-3.5 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-base">Horario
+                        class="mobile-nav-link nav-link py-4 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-lg">Horario
                         <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
                     <a href="#motivacion"
-                        class="mobile-nav-link nav-link py-3.5 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-base">Motivación
+                        class="mobile-nav-link nav-link py-4 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-lg">Motivación
                         <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
                     <a href="#contacto"
-                        class="mobile-nav-link nav-link py-3.5 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-base">Contacto
+                        class="mobile-nav-link nav-link py-4 px-5 rounded-xl hover:bg-red-50/60 flex items-center justify-between text-lg">Contacto
                         <i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
                     <div class="pt-3 px-2">
                         <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
@@ -1214,31 +1451,32 @@
     </a>
 
     <!-- ===== MAIN ===== -->
-    <main class="pt-18 sm:pt-20 w-full max-w-full overflow-hidden">
+    <main class="pt-20 sm:pt-24 w-full max-w-full overflow-hidden">
 
         <!-- ===== HERO ===== -->
         <section id="inicio"
-            class="hero-section relative flex items-center justify-center py-8 sm:py-24 text-center text-white w-full">
+            class="hero-section relative flex items-center justify-center py-8 sm:py-20 text-center text-white w-full">
             <div class="hero-bg-carousel" data-hero-carousel aria-hidden="true">
-                <img src="imagenes/Banner PowerGym.jpg" alt="" class="hero-slide active" decoding="async"
+                <img src="imagenes/Banner PowerGym.jpg" alt="" class="hero-slide horizontal active" decoding="async"
                     fetchpriority="high">
                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                    data-src="imagenes/Mejor version.jpg" alt="" class="hero-slide" loading="lazy" decoding="async">
+                    data-src="imagenes/Mejor version.jpg" alt="" class="hero-slide vertical" loading="lazy"
+                    decoding="async">
                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                    data-src="imagenes/Ventas de suplementos.jpg" alt="" class="hero-slide" loading="lazy"
+                    data-src="imagenes/Ventas de suplementos.jpg" alt="" class="hero-slide vertical" loading="lazy"
                     decoding="async">
             </div>
             <div class="hero-mobile-image" data-hero-carousel>
-                <img src="imagenes/Banner PowerGym.jpg" alt="PowerGym Juigalpa" class="hero-slide active"
+                <img src="imagenes/Banner PowerGym.jpg" alt="PowerGym Juigalpa" class="hero-slide horizontal active"
                     decoding="async" fetchpriority="high">
                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                    data-src="imagenes/Mejor version.jpg" alt="PowerGym Entrenamiento" class="hero-slide" loading="lazy"
-                    decoding="async">
+                    data-src="imagenes/Mejor version.jpg" alt="PowerGym Entrenamiento" class="hero-slide vertical"
+                    loading="lazy" decoding="async">
                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                    data-src="imagenes/Ventas de suplementos.jpg" alt="PowerGym Suplementos" class="hero-slide"
+                    data-src="imagenes/Ventas de suplementos.jpg" alt="PowerGym Suplementos" class="hero-slide vertical"
                     loading="lazy" decoding="async">
             </div>
-            <div class="hero-content max-w-4xl mx-auto px-4 w-full overflow-hidden flex flex-col items-center">
+            <div class="hero-content max-w-3xl mx-auto px-4 w-full overflow-hidden flex flex-col items-center">
 
                 <p class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-sm font-bold mb-4"
                     data-aos="fade-up">
@@ -1246,17 +1484,17 @@
                     El gimnasio #1 de Juigalpa
                 </p>
 
-                <h1 class="text-3xl sm:text-6xl font-black leading-tight mb-4 sm:mb-6 tracking-tight max-w-full px-2"
+                <h1 class="text-3xl sm:text-5xl font-black leading-tight mb-4 sm:mb-6 tracking-tight max-w-full px-2"
                     data-aos="fade-up">
                     Transforma tu cuerpo.<br>Construye tu <span class="text-primary">mejor versión</span>
                 </h1>
 
-                <p class="text-base sm:text-xl text-gray-200 max-w-2xl mx-auto mb-6 sm:mb-10 leading-relaxed px-2"
+                <p class="text-base sm:text-lg text-gray-200 max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2"
                     data-aos="fade-up" data-aos-delay="100">
                     Entrena con equipamiento profesional, acceso 24/7 y una comunidad enfocada en resultados reales.
                 </p>
 
-                <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full max-w-md px-4 sm:px-0"
+                <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full max-w-sm px-4 sm:px-0"
                     data-aos="fade-up" data-aos-delay="180">
                     <a href="https://wa.me/50586289512" target="_blank" rel="noopener"
                         class="btn-primary px-8 py-3.5 text-base w-full sm:w-auto">
@@ -1268,8 +1506,7 @@
                     </a>
                 </div>
 
-                <!-- ===== STATS ===== -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-3xl mx-auto mt-8 sm:mt-14"
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-2xl mx-auto mt-8 sm:mt-12"
                     data-aos="fade-up" data-aos-delay="250">
 
                     <div
@@ -1438,48 +1675,64 @@
         <section id="motivacion" class="py-12 sm:py-20 bg-soft w-full max-w-full overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="motivation-card">
-                    <div class="content-wrapper">
-                        <div class="big-icon">
-                            <i class="fa-solid fa-fire-flame-curved"></i>
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="image-wrapper flex items-center justify-center p-8 sm:p-12 bg-gradient-to-br from-primary/20 to-primary/5">
+                            <div class="text-center">
+                                <div class="big-icon">
+                                    <i class="fa-solid fa-fire-flame-curved"></i>
+                                </div>
+                                <h3 class="text-2xl sm:text-3xl font-black text-white">
+                                    Entrena y alcanza tu <span class="text-primary">mejor versión</span>
+                                </h3>
+                                <p class="text-gray-300 mt-2 text-sm sm:text-base max-w-sm mx-auto">
+                                    Cada gota de sudor te acerca a la mejor versión de ti mismo.
+                                </p>
+                            </div>
                         </div>
-                        <h3>
-                            Entrena y alcanza tu <span>mejor versión</span>
-                        </h3>
-                        <p>
-                            En PowerGym no solo transformas tu cuerpo, construyes disciplina, carácter y una mentalidad
-                            de campeón. Cada gota de sudor te acerca a la mejor versión de ti mismo.
-                        </p>
-                        <div class="flex flex-wrap justify-center gap-2 mb-6">
-                            <span class="feature-tag" style="background: rgba(220,38,38,0.15); border-color: rgba(220,38,38,0.2); color: #dc2626;">
-                                <i class="fa-solid fa-dumbbell"></i> Disciplina
-                            </span>
-                            <span class="feature-tag" style="background: rgba(220,38,38,0.15); border-color: rgba(220,38,38,0.2); color: #dc2626;">
-                                <i class="fa-solid fa-heart"></i> Pasión
-                            </span>
-                            <span class="feature-tag" style="background: rgba(220,38,38,0.15); border-color: rgba(220,38,38,0.2); color: #dc2626;">
-                                <i class="fa-solid fa-trophy"></i> Constancia
-                            </span>
-                            <span class="feature-tag" style="background: rgba(220,38,38,0.15); border-color: rgba(220,38,38,0.2); color: #dc2626;">
-                                <i class="fa-solid fa-star"></i> Resultados
-                            </span>
+
+                        <div class="content-wrapper flex flex-col justify-center text-white">
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+                                En PowerGym no solo transformas tu cuerpo, construyes disciplina, carácter y una mentalidad
+                                de campeón. Cada gota de sudor te acerca a la mejor versión de ti mismo.
+                            </p>
+
+                            <div class="grid grid-cols-2 gap-3 mb-6">
+                                <div class="feature-item">
+                                    <i class="fa-solid fa-dumbbell"></i>
+                                    <span>Disciplina</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <span>Pasión</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fa-solid fa-trophy"></i>
+                                    <span>Constancia</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fa-solid fa-star"></i>
+                                    <span>Resultados</span>
+                                </div>
+                            </div>
+
+                            <a href="https://wa.me/50586289512" target="_blank"
+                                class="btn-primary px-8 py-3.5 w-full sm:w-auto text-base">
+                                <i class="fa-brands fa-whatsapp"></i> Comienza tu transformación
+                            </a>
                         </div>
-                        <a href="https://wa.me/50586289512" target="_blank"
-                            class="btn-primary px-10 py-3.5 w-full sm:w-auto text-base">
-                            <i class="fa-brands fa-whatsapp"></i> Comienza tu transformación
-                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== CONTACTO ===== -->
+        <!-- ===== CONTACTO - TIPOGRAFÍA GRANDE ===== -->
         <section id="contacto" class="py-12 sm:py-20 bg-ink text-white w-full max-w-full overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 sm:gap-12 items-center">
                     <div data-aos="fade-right">
-                        <p class="text-primary font-black uppercase tracking-wide mb-2 text-sm">Contacto</p>
-                        <h2 class="text-2xl sm:text-5xl font-black mb-4">¿Listo para cambiar?</h2>
-                        <p class="text-gray-300 text-base sm:text-lg mb-6 sm:mb-8">
+                        <p class="text-primary font-black uppercase tracking-wide mb-2 text-sm contact-subtitle">Contacto</p>
+                        <h2 class="contact-title text-2xl sm:text-5xl font-black mb-4">¿Listo para cambiar?</h2>
+                        <p class="text-gray-300 contact-text mb-6 sm:mb-8">
                             Escríbenos y empieza tu entrenamiento en PowerGym Juigalpa. Te ayudamos a elegir la mejor
                             opción para tu meta.
                         </p>
@@ -1490,8 +1743,8 @@
                                     <i class="fa-solid fa-location-dot"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-white text-sm sm:text-lg">Dirección</h4>
-                                    <p class="text-gray-300 text-xs sm:text-base">Disnorte 1/2 cuadra al este, Juigalpa, Nicaragua</p>
+                                    <h4 class="font-bold text-white info-title">Dirección</h4>
+                                    <p class="text-gray-300 info-text">Disnorte 1/2 cuadra al este, Juigalpa, Nicaragua</p>
                                 </div>
                             </div>
                             <div class="flex gap-3 sm:gap-4">
@@ -1500,8 +1753,8 @@
                                     <i class="fa-solid fa-phone"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-white text-sm sm:text-lg">Teléfono</h4>
-                                    <p class="text-gray-300 text-xs sm:text-base">+505 8628 9512</p>
+                                    <h4 class="font-bold text-white info-title">Teléfono</h4>
+                                    <p class="text-gray-300 info-text">+505 8628 9512</p>
                                 </div>
                             </div>
                             <div class="flex gap-3 sm:gap-4">
@@ -1510,8 +1763,8 @@
                                     <i class="fa-solid fa-clock"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-white text-sm sm:text-lg">Horario</h4>
-                                    <p class="text-gray-300 text-xs sm:text-base">24/7 abierto</p>
+                                    <h4 class="font-bold text-white info-title">Horario</h4>
+                                    <p class="text-gray-300 info-text">24/7 abierto</p>
                                 </div>
                             </div>
                             <div class="flex gap-3 sm:gap-4">
@@ -1520,8 +1773,8 @@
                                     <i class="fa-solid fa-hashtag"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-white text-sm sm:text-lg">Redes Sociales</h4>
-                                    <p class="text-gray-300 text-xs sm:text-base">Síguenos en nuestras redes:</p>
+                                    <h4 class="font-bold text-white info-title">Redes Sociales</h4>
+                                    <p class="text-gray-300 info-text">Síguenos en nuestras redes:</p>
                                     <div class="flex gap-2 sm:gap-3 mt-1 sm:mt-2">
                                         <a href="https://www.facebook.com/profile.php?id=100064038700639&locale=es_LA"
                                             target="_blank" rel="noopener"
@@ -1540,27 +1793,27 @@
                     </div>
 
                     <div class="bg-white text-ink p-6 sm:p-8 rounded-2xl shadow-glow" data-aos="fade-left">
-                        <h3 class="text-xl sm:text-2xl font-black mb-1">Contacto Directo vía WhatsApp</h3>
-                        <p class="text-muted text-sm mb-4 sm:mb-6">Cuéntanos tu consulta y te ayudaremos a resolverla.</p>
+                        <h3 class="contact-title text-xl sm:text-2xl font-black mb-1">Contacto Directo vía WhatsApp</h3>
+                        <p class="text-muted contact-text mb-4 sm:mb-6">Cuéntanos tu consulta y te ayudaremos a resolverla.</p>
                         <form id="contact-form" class="space-y-4 sm:space-y-5">
                             <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-1" for="name">Tu Nombre</label>
+                                <label class="block text-slate-700 mb-1 contact-label" for="name">Tu Nombre</label>
                                 <input id="name" type="text" placeholder="Ej. Carlos Mendoza" required
-                                    class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary text-sm sm:text-base">
+                                    class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary contact-input">
                             </div>
                             <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-1" for="phone">Número de WhatsApp</label>
+                                <label class="block text-slate-700 mb-1 contact-label" for="phone">Número de WhatsApp</label>
                                 <input id="phone" type="tel" placeholder="Ej. 8628 9512" required
-                                    class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary text-sm sm:text-base">
+                                    class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary contact-input">
                             </div>
                             <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-1" for="message">¿Qué consulta tienes?</label>
+                                <label class="block text-slate-700 mb-1 contact-label" for="message">¿Qué consulta tienes?</label>
                                 <textarea id="message" rows="3"
                                     placeholder="Ej. Quiero saber precios, horarios, membresías, disponibilidad de productos..."
                                     required
-                                    class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary text-sm sm:text-base"></textarea>
+                                    class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary contact-input"></textarea>
                             </div>
-                            <button type="submit" class="btn-primary w-full py-3 sm:py-4 text-sm sm:text-base">
+                            <button type="submit" class="btn-primary w-full py-3 sm:py-4 text-sm sm:text-base contact-btn">
                                 <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i> Enviar mensaje
                             </button>
                         </form>
@@ -1598,7 +1851,9 @@
                         class="w-14 h-14 sm:w-18 sm:h-18 object-cover rounded-xl opacity-95" loading="lazy"
                         decoding="async">
                     <div>
-                        <h4 class="font-heading font-black text-lg sm:text-xl">Power<span class="text-primary">Gym</span></h4>
+                        <h4 class="font-heading font-black text-lg sm:text-xl">
+                            <span class="text-primary">Power</span><span class="text-white">Gym</span>
+                        </h4>
                         <p class="text-gray-400 text-sm">El gimnasio #1 de Juigalpa</p>
                     </div>
                 </div>
@@ -1664,7 +1919,7 @@
             easing: 'ease-out-cubic'
         });
 
-        // ===== DATOS DEL MENÚ =====
+        // ===== DATOS DEL MENÚ - DESCRIPCIONES MEJORADAS =====
         const menuData = [{
             id: 'proteina',
             category: "Proteína",
@@ -1674,7 +1929,7 @@
             type: "productos",
             items: [{
                 name: "Proteína Whey",
-                desc: "Proteína de suero de leche de alta calidad para recuperación muscular y ganancia de masa.",
+                desc: "Proteína de suero de leche de alta calidad, ideal para la recuperación muscular y el crecimiento de masa magra. Su rápida absorción la convierte en el suplemento perfecto post-entreno. Ayuda a reparar el tejido muscular y reducir el tiempo de recuperación entre sesiones.",
                 price: "C$ 850",
                 img: "imagenes/Proteinas.jpg",
                 beneficiosImg: "imagenes/Beneficios Proteina.jpg"
@@ -1688,7 +1943,7 @@
             type: "productos",
             items: [{
                 name: "Creatina Monohidratada",
-                desc: "La creatina más estudiada y efectiva para aumentar fuerza y rendimiento.",
+                desc: "El suplemento más estudiado y efectivo para aumentar la fuerza, la potencia y el rendimiento deportivo. La creatina monohidratada ayuda a regenerar el ATP, permitiendo entrenar con mayor intensidad y volumen. Ideal para deportes de alta intensidad y entrenamiento con pesas.",
                 price: "C$ 650",
                 img: "imagenes/Creatina.jpg",
                 beneficiosImg: "imagenes/Beneficios Creatina.jpg"
@@ -1702,7 +1957,7 @@
             type: "productos",
             items: [{
                 name: "Pre-Entreno Intenso",
-                desc: "Fórmula avanzada para máxima energía, enfoque y pump durante tu entrenamiento.",
+                desc: "Fórmula avanzada diseñada para maximizar tu energía, enfoque y pump durante el entrenamiento. Su combinación de ingredientes activos te proporciona la motivación y el rendimiento necesarios para superar tus límites en cada sesión.",
                 price: "C$ 550",
                 img: "imagenes/Pre-entreno.jpg",
                 beneficiosImg: "imagenes/Beneficios Pre_entreno.jpg"
